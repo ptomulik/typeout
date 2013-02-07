@@ -120,7 +120,7 @@ The ``typeout`` library provides utilities to generate messages containing
 previously registered type names, which may be a valuable debug information from
 your test suites.
 
-EXAMPLES
+SOLUTION
 --------
 
 Consider the test case from previous section. With ``typeout`` you may easily
@@ -153,6 +153,9 @@ Now, the output from test runner with ``--log_level=message`` is like::
     a.cpp(14): error in "my_test<h>": check sizeof(T) == (unsigned)4 failed [1 != 4]
 
     *** 2 failures detected in test suite "example"
+
+Now it's easier to guess, that the test suite failed for ``long int`` and
+``unsigned char`` types.
 
 DOCUMENTATION
 -------------
