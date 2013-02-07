@@ -40,7 +40,7 @@ template <typename Type>
 struct _ : public error_type_not_registered<Type> 
 { 
   template <class Ostream>
-  static void so(Ostream& os);
+  static void write(Ostream& os);
 };
 
 } /* namespace _type */
