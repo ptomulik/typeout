@@ -1,0 +1,71 @@
+# @COPYRIGHT@
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE
+
+Import('env')
+
+env.Program('reg_tclass1.cpp')
+env.Program('reg_tclass2.cpp')
+env.Program('reg_tclass3.cpp')
+env.Program('reg_tclass4.cpp')
+
+env.Program('reg_tclass_as1.cpp')
+env.Program('reg_tclass_as2.cpp')
+env.Program('reg_tclass_as3.cpp')
+env.Program('reg_tclass_as4.cpp')
+## 
+env.Program('reg_tclass_with_tparams1.cpp')
+env.Program('reg_tclass_with_tparams2.cpp')
+env.Program('reg_tclass_with_tparams3.cpp')
+## 
+env.Program('reg_tclass_with_tparams_as1.cpp')
+env.Program('reg_tclass_with_tparams_as2.cpp')
+env.Program('reg_tclass_with_tparams_as3.cpp')
+## 
+env.Program('reg_tclass_with_nparams1.cpp')
+env.Program('reg_tclass_with_nparams2.cpp')
+env.Program('reg_tclass_with_nparams3.cpp')
+## 
+env.Program('reg_tclass_with_nparams_as1.cpp')
+env.Program('reg_tclass_with_nparams_as2.cpp')
+env.Program('reg_tclass_with_nparams_as3.cpp')
+## 
+env.Program('reg_tclass_with_tnparams1.cpp')
+env.Program('reg_tclass_with_tnparams2.cpp')
+env.Program('reg_tclass_with_tnparams3.cpp')
+env.Program('reg_tclass_with_tnparams4.cpp')
+## 
+env.Program('reg_tclass_with_tnparams_as1.cpp')
+env.Program('reg_tclass_with_tnparams_as2.cpp')
+env.Program('reg_tclass_with_tnparams_as3.cpp')
+env.Program('reg_tclass_with_tnparams_as4.cpp')
+## 
+env.Program('reg_tclass_with_ntparams1.cpp')
+env.Program('reg_tclass_with_ntparams2.cpp')
+env.Program('reg_tclass_with_ntparams3.cpp')
+env.Program('reg_tclass_with_ntparams4.cpp')
+## 
+env.Program('reg_tclass_with_ntparams_as1.cpp')
+env.Program('reg_tclass_with_ntparams_as2.cpp')
+env.Program('reg_tclass_with_ntparams_as3.cpp')
+env.Program('reg_tclass_with_ntparams_as4.cpp')
+##
+env.Program('reg_tclass_with_tparams_range1.cpp')
+## 
+env.Program('reg_tclass_with_nparams_range1.cpp')

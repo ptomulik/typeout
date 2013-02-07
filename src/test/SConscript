@@ -1,0 +1,69 @@
+# @COPYRIGHT@
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE
+
+Import('env')
+
+import SCons.Util
+
+#############################################################################
+# C++ programs that should be build (and run)
+test_cpp_files = [
+  'typeout/type/test_fundamental.cpp',
+  'typeout/type/test_partial_specs_cv.cpp',
+  'typeout/type/test_partial_specs_ptr.cpp',
+  'typeout/type/test_partial_specs_ref.cpp',
+  'typeout/type/test_partial_specs_ext1.cpp',
+  'typeout/type/test_partial_specs_ext1_cv.cpp',
+  'typeout/type/test_partial_specs_ext1_ptr.cpp',
+  'typeout/type/test_partial_specs_ext1_cv_ptr.cpp',
+  'typeout/type/test_partial_specs_ext1_ptr_cv.cpp',
+  'typeout/type/test_partial_specs_ext1_cv_ptr_cv.cpp',
+  'typeout/type/test_partial_specs_ext2.cpp',
+  'typeout/type/test_partial_specs_ext2_cv.cpp',
+  'typeout/type/test_partial_specs_ext2_ptr.cpp',
+  'typeout/type/test_partial_specs_ext2_cv_ptr.cpp',
+  'typeout/type/test_partial_specs_ext2_ptr_cv.cpp',
+  'typeout/type/test_partial_specs_ext2_cv_ptr_cv.cpp',
+]
+
+#############################################################################
+# Overrides for building the tests
+try: cpp_path = env['CPPPATH']
+except KeyError: cpp_path = []
+cxx_overrides = { 'CPPDEFINES'  : { 'BOOST_TEST_DYN_LINK' : 1 },
+                  'CPPPATH' : SCons.Util.CLVar( cpp_path + ['.']) }
+ld_overrides = { 'LIBS' : SCons.Util.CLVar( [ 'boost_unit_test_framework' ] ) }
+
+#############################################################################
+# Build all the C++ programs
+test_o_files = []
+for unit in test_cpp_files:
+  test_o_files += env.Object( unit, **cxx_overrides)
+test_o_files += env.Object( ['runtests.cpp'], **cxx_overrides )
+
+runtest_program = env.Program(['runtests'], test_o_files, **ld_overrides)
+
+env.Alias( 'check', runtest_program )
+
+
+################################# SUBDIRECTORIES #############################
+subdirs = [ ]
+scripts = [ '%s/SConscript' % s for s in subdirs ]
+SConscript( scripts, exports = ['env'] )
