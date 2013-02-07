@@ -66,13 +66,13 @@ If you ever used `Boost Test Library`_, you may know the test case templates
 case template from a meta-sequence of types and it performs series of checks on
 each type from the sequence. The problem is, that when something goes wrong at
 runtime and you start investigating the issue, the default output from test
-runner (``--log_level=test_suite``) may be not informative. The test runner
-usually shows you just brief result of failed checks without information about
-the name of the element from meta-sequence for which the test failed, or (with
-higher ``log_level``) this information is encoded in mangled type names that
-are not human readable. One possible approach to cope with this problem is to
-provide user-readable messages with full information about currently processed
-types.
+runner may be not informative. The test runner usually shows you just brief
+result of failed checks without information about the (type) name of the
+element from meta-sequence for which the test failed, or (with
+``--log_level=test_suite`` for example) the crucial information is encoded in
+mangled type names that are not human readable (at least in some compilers,
+e.g. g++). One possible approach to cope with this problem is to provide
+user-readable messages with full information about currently processed types.
 
 The usage example of `BOOST_AUTO_TEST_CASE_TEMPLATE()`_ (from its
 documentation) is::
