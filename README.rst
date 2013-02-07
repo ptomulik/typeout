@@ -1,34 +1,31 @@
-typeout - small c++ library to retrieve c++ type names at runtime
-=================================================================
+typeout - c++ library to retrieve type names at runtime
+=======================================================
 
 INTRODUCTION
 ------------
 
-This small utility library allows you to register types or template classes in
-one place of your program and retrieve their names at runtime in other places.
-This is one of several aspects of so-called reflection (or introspection). The
-library is thought to be used for simple debugging and writing test-suites in
-form of template functions. It supports standard output streams
-(``std::basic_ostream``) and standard strings (``std::string``) as targets.
+This small utility library allows you to register types at one place of your
+program and retrieve their names at runtime at other places. The library is
+thought to be used for simple debugging and writing test-suites based on c++
+templates. Currently it supports standard output streams
+(``std::basic_ostream``) and standard strings (``std::string``) as outputs.
 
 STATUS
 ------
 
 The project is at very early stage. Few things already work quite well, but
-much of work is in front, and much of already developed code might be subject
-to changes. The current status is *experimental*.
+much of the work is in front, and much of the existing code/interfaces might be
+subject to changes. The current status is thus *experimental*.
 
 Things that work:
 
-  - registering fundamental c++ types (actually all fundamental types are
-    pre-registered by ``typeout`` and are ready to use),
-  - registering custom classes, and structures,
-  - registering template classes (with type and non-type parameters, templates
-    as parameters are not currently supported by registration machinery),
+  - registering fundamental c++ types (actually fundamental c++ types are
+    already pre-registered),
+  - registering custom classes and structures,
+  - registering template classes (with type and non-type parameters),
   - handling cv-qualified types, references, pointers and array extents for each
-    registered type without user's intervention,
-  - direct output to standard streams, and standard strings,
-
+    registered type without additional user's effort,
+  - direct output to standard streams and standard strings,
 
 Things that are missing:
 
@@ -46,12 +43,12 @@ Things that are missing:
 REQUIREMENTS
 ------------
 
-The ``typeout`` library has following dependencies:
+The **typeout** library has following dependencies:
 
   - `Boost Config`_ is used to configure the internals and features of the library,
-    you need it each time you use the ``typeout`` library,
+    you need it each time you use the **typeout** library,
   - `Boost Preprocessor`_ is used by several preprocessor macros, you need it
-    each time you use the ``typeout`` library,
+    each time you use the **typeout** library,
   - `Boost Test Library`_ is used by test suite, you'll need it if you plan to
     compile (and run) test suites,
   - `Doxygen`_ used to generate API documentation, you'll need it if you plan
@@ -61,17 +58,24 @@ The ``typeout`` library has following dependencies:
 MOTIVATION
 ----------
 
+SAMPLE PROBLEM
+``````````````
+
 If you ever used `Boost Test Library`_, you may know the test case templates
 (for example `BOOST_AUTO_TEST_CASE_TEMPLATE()`_).  Normally you feed the test
-case template from a sequence of types and test case template performs series of
-checks on each provided type. The problem is, that when something goes wrong at
+case template from a meta-sequence of types and it performs series of checks on
+each type from the sequence. The problem is, that when something goes wrong at
 runtime and you start investigating the issue, the default output from test
-runner (``--log_level=test_suite``) may show you just a bunch of mangled type
-names that are not human readable. One possible approach to cope with this
-problem is to provide user-readable messages with full information about
-currently processed types.
+runner (``--log_level=test_suite``) may be not informative. The test runner
+usually shows you just brief result of failed checks without information about
+the name of the element from meta-sequence for which the test failed, or (with
+higher ``log_level``) this information is encoded in mangled type names that
+are not human readable. One possible approach to cope with this problem is to
+provide user-readable messages with full information about currently processed
+types.
 
-The usage example of `BOOST_AUTO_TEST_CASE_TEMPLATE()`_ is::
+The usage example of `BOOST_AUTO_TEST_CASE_TEMPLATE()`_ (from its
+documentation) is::
 
     #define BOOST_TEST_MODULE example
     #include <boost/test/included/unit_test.hpp>
@@ -86,8 +90,8 @@ The usage example of `BOOST_AUTO_TEST_CASE_TEMPLATE()`_ is::
     }
 
 The question is, what you'll learn from the output of this test case when it
-fails (and yes, on most platforms it fails for ``unsigned char``)? Well, you'll
-be informed that::
+fails (it is designed to fail on most platforms, consider the result of
+``sizeof(unsigned char)==4``)? Well, you'll be informed that::
 
     Running 3 test cases...
     a.cpp(10): error in "my_test<l>": check sizeof(T) == (unsigned)4 failed [8 != 4]
@@ -114,16 +118,17 @@ failure.  If your test suite is compiled with ``gcc``, then with flag
     *** 2 failures detected in test suite "example"
 
 Judge yourself if it is more informative than the output without any additional
-debug information.
+debug information and imagine the debugging for types which come from
+instantiation of complicated templates.
 
-The ``typeout`` library provides utilities to generate messages containing
-previously registered type names, which may be a valuable debug information from
-your test suites.
+The **typeout** library provides utilities which basically allow you to
+generate meaningful messages containing previously registered type names, and
+can be used to resolve above debugging issues. 
 
 SOLUTION
---------
+````````
 
-Consider the test case from previous section. With ``typeout`` you may easily
+Consider the test case from previous section. With **typeout** you may easily
 augment the test case output with your own messages containing type names. For
 example::
 
@@ -154,8 +159,8 @@ Now, the output from test runner with ``--log_level=message`` is like::
 
     *** 2 failures detected in test suite "example"
 
-Now it's easier to guess, that the test suite failed for ``long int`` and
-``unsigned char`` types.
+As you see, it's much easier to guess, that the test suite failed for ``long
+int`` and ``unsigned char`` types.
 
 DOCUMENTATION
 -------------
