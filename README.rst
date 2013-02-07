@@ -238,5 +238,5 @@ SOFTWARE
 .. _Boost Config: http://boost.org/libs/config
 .. _Boost Preprocessor: http://boost.org/libs/preprocessor
 .. _Boost Test Library: http://boost.org/libs/test/
-.. _BOOST_AUTO_TEST_CASE_TEMPLATE(): www.boost.org/libs/test/doc/html/utf/user-guide/test-organization/auto-test-case-template.html
+.. _BOOST_AUTO_TEST_CASE_TEMPLATE(): http://boost.org/libs/test/doc/html/utf/user-guide/test-organization/auto-test-case-template.html
 .. <!--- vim: set expandtab tabstop=2 shiftwidth=2 syntax=rst: -->
