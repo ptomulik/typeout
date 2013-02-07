@@ -71,8 +71,8 @@ result of failed checks without information about the (type) name of the
 element from meta-sequence for which the test failed, or (with
 ``--log_level=test_suite`` for example) the crucial information is encoded in
 mangled type names that are not human readable (at least in some compilers,
-e.g. g++). One possible approach to cope with this problem is to provide
-user-readable messages with full information about currently processed types.
+e.g. g++). One possible remedy is to provide user-readable messages with full
+information about currently processed types.
 
 The usage example of `BOOST_AUTO_TEST_CASE_TEMPLATE()`_ (from its
 documentation) is::
