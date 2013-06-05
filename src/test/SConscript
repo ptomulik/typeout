@@ -41,6 +41,21 @@ test_cpp_files = [
   'typeout/type/test_partial_specs_ext2_cv_ptr.cpp',
   'typeout/type/test_partial_specs_ext2_ptr_cv.cpp',
   'typeout/type/test_partial_specs_ext2_cv_ptr_cv.cpp',
+# std::
+  'typeout/type/std/test_std_array.cpp',
+  'typeout/type/std/test_std_atomic.cpp',
+  'typeout/type/std/test_std_bitset.cpp',
+  'typeout/type/std/test_std_chrono.cpp',
+  'typeout/type/std/test_std_clocale.cpp',
+  'typeout/type/std/test_std_cmath.cpp',
+  'typeout/type/std/test_std_complex.cpp',
+  'typeout/type/std/test_std_condition_variable.cpp',
+  'typeout/type/std/test_std_ctime.cpp',
+  'typeout/type/std/test_std_cwchar.cpp',
+  'typeout/type/std/test_std_deque.cpp',
+
+  'typeout/type/std/test_std_memory.cpp',
+  'typeout/type/std/test_std_ratio.cpp',
 ]
 
 #############################################################################

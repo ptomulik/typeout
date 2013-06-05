@@ -25,14 +25,15 @@
  * \todo Write documentation
  */ // }}}
 #include <typeout/test_config.hpp>
-#if TYPEOUT_TEST_TYPE_FUNDAMENTAL_ENABLED
+#if TYPEOUT_TEST_TYPE_STD_BITSET_ENABLED
 
+#include <typeout/type/std/bitset.hpp>
 #include <typeout/type/fundamental.hpp>
 #include <boost/test/unit_test.hpp>
 
 #include <sstream>
 
-BOOST_AUTO_TEST_SUITE(test_type_fundamental_unit)
+BOOST_AUTO_TEST_SUITE(test_type_std_bitset_unit)
 
 template <typename T>
 std::string _s()
@@ -42,44 +43,16 @@ std::string _s()
   return ss.str();
 }
 
-// Check if the registration of fundamental types produced correct
-// meta-classes.
 BOOST_AUTO_TEST_CASE(type_names)
 {
-  /* void */
-  BOOST_CHECK_EQUAL(_s<void>(),"void");
-
   /* Integral types */
-  BOOST_CHECK_EQUAL(_s<bool>(),"bool");
-  BOOST_CHECK_EQUAL(_s<char>(),"char");
-
-#if TYPEOUT_SUPPORT_CHAR16_T
-  BOOST_CHECK_EQUAL(_s<char16_t>(),"char16_t");
-#endif
-#if TYPEOUT_SUPPORT_CHAR32_T
-  BOOST_CHECK_EQUAL(_s<char32_t>(),"char32_t");
-#endif
-
-  BOOST_CHECK_EQUAL(_s<wchar_t>(),"wchar_t");
-  BOOST_CHECK_EQUAL(_s<signed char>(),"signed char");
-  BOOST_CHECK_EQUAL(_s<short int>(),"short int");
-  BOOST_CHECK_EQUAL(_s<int>(),"int");
-  BOOST_CHECK_EQUAL(_s<long int>(),"long int");
-  BOOST_CHECK_EQUAL(_s<long long int>(),"long long int");
-  BOOST_CHECK_EQUAL(_s<unsigned char>(),"unsigned char");
-  BOOST_CHECK_EQUAL(_s<unsigned short int>(),"unsigned short int");
-  BOOST_CHECK_EQUAL(_s<unsigned int>(),"unsigned int");
-  BOOST_CHECK_EQUAL(_s<unsigned long int>(),"unsigned long int");
-  BOOST_CHECK_EQUAL(_s<unsigned long long int>(),"unsigned long long int");
-
-  /* floating point types */
-  BOOST_CHECK_EQUAL(_s<float>(),"float");
-  BOOST_CHECK_EQUAL(_s<double>(),"double");
+  BOOST_CHECK_EQUAL((_s<std::bitset<1> >()),"std::bitset < 1 >");
+  BOOST_CHECK_EQUAL((_s<std::bitset<2> >()),"std::bitset < 2 >");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
 
-#endif /* TYPEOUT_TEST_TYPE_FUNDAMENTAL_ENABLED */
+#endif /* TYPEOUT_TEST_TYPE_STD_BITSET_ENABLED */
 
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:
