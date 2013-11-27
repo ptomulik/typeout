@@ -73,12 +73,18 @@
 #       define TYPEOUT_NO_STD_HDR_CONDITION_VARIABLE 0
 #     endif
 #   endif
-
 #   ifndef TYPEOUT_NO_STD_HDR_RATIO
 #     ifdef BOOST_NO_CXX11_HDR_RATIO
 #       define TYPEOUT_NO_STD_HDR_RATIO 1
 #     else
 #       define TYPEOUT_NO_STD_HDR_RATIO 0
+#     endif
+#   endif
+#   ifndef TYPEOUT_NO_STD_HDR_TUPLE
+#     ifdef BOOST_NO_CXX11_HDR_TUPLE
+#       define TYPEOUT_NO_STD_HDR_TUPLE 1
+#     else
+#       define TYPEOUT_NO_STD_HDR_TUPLE 0
 #     endif
 #   endif
 
@@ -113,12 +119,18 @@
 #       define TYPEOUT_NO_STD_HDR_CONDITION_VARIABLE 0
 #     endif
 #   endif
-
 #   ifndef TYPEOUT_NO_STD_HDR_RATIO
 #     ifdef BOOST_NO_0X_HDR_RATIO
 #       define TYPEOUT_NO_STD_HDR_RATIO 1
 #     else
 #       define TYPEOUT_NO_STD_HDR_RATIO 0
+#     endif
+#   endif
+#   ifndef TYPEOUT_NO_STD_HDR_TUPLE
+#     ifdef BOOST_NO_0X_HDR_TUPLE
+#       define TYPEOUT_NO_STD_HDR_TUPLE 1
+#     else
+#       define TYPEOUT_NO_STD_HDR_TUPLE 0
 #     endif
 #   endif
 
@@ -258,6 +270,16 @@
 #   define TYPEOUT_SUPPORT_STD_RATIO !TYPEOUT_NO_STD_HDR_RATIO
 # endif
 
+# ifndef TYPEOUT_SUPPORT_STD_TUPLE
+#   define TYPEOUT_SUPPORT_STD_TUPLE !TYPEOUT_NO_STD_HDR_TUPLE
+# endif
+
+//
+// constants
+//
+# ifndef TYPEOUT_STD_TUPLE_ARGS_MAX
+#   define TYPEOUT_STD_TUPLE_ARGS_MAX 10
+# endif
 
 #else // TYPEOUT_IS_COMPILING_DOCS
 
@@ -992,9 +1014,64 @@
  * \hideinitializer
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_RATIO 
+/** // doc: TYPEOUT_SUPPORT_STD_TUPLE {{{
+ * \brief Whether to support c++11 \c std::tuple.
+ *
+ * This directive tells the \c typeout whether to enable code that involves
+ * \c std::tuple.
+ *
+ * The directive is always defined as either \c 0 or \c 1. If not provided by
+ * user, the value is guessed. If \c TYPEOUT_NO_STD_HDR_TUPLE is zero, then
+ * support for \c std::tuple is enabled. Otherwise the constant
+ * TYPEOUT_SUPPORT_STD_TUPLE is set to \c 0. You may prevent the \c typeout
+ * from guessing by defining this macro prior to including \c typeout's
+ * header(s).
+ *
+ * <b>Example 1</b>:
+ * \code
+ * // Disable library code that uses std::tuple.
+ * #define TYPEOUT_SUPPORT_STD_TUPLE 0 
+ * #include <typeout/typeout.hpp>
+ * #include <typeout/type/std/tuple.hpp>
+ * // NOTE: support for std::tuple was disabled, so for example this code
+ * //   std::cout << typeout::_<std::tuple<int,char> > << std::endl;
+ * // will not compile here.
+ * \endcode
+ *
+ * <b>Example 2</b>:
+ * \code
+ * #include <typeout/typeout.hpp>
+ * #include <typeout/type/std/tuple.hpp>
+ * // ...
+ * #if TYPEOUT_SUPPORT_STD_TUPLE
+ * // test case with std::tuple ...
+ * #endif
+ * \endcode
+ *
+ * \hideinitializer
+ */ // }}}
+# define TYPEOUT_SUPPORT_STD_TUPLE 
+
+
+//
+// constants
+//
+/** // doc: TYPEOUT_STD_TUPLE_ARGS_MAX {{{
+ * \brief Maximum number of arguments in std::tuple.
+ *
+ * This directive defines the maximum number of std::tuple arguments handled by
+ * typeout library. Tuples with more arguments than TYPEOUT_STD_TUPLE_ARGS_MAX
+ * are not supported. If the 
+ *
+ * The directive is always defined as a non-negative integer.
+ * \hideinitializer
+ */ // }}}
+# define TYPEOUT_STD_TUPLE_ARGS_MAX 10
 /** @} */
 
 #endif // !TYPEOUT_IS_COMPILING_DOCS
+
+
 
 #endif /* TYPEOUT_CONFIG_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:

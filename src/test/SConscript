@@ -56,6 +56,7 @@ test_cpp_files = [
 
   'typeout/type/std/test_std_memory.cpp',
   'typeout/type/std/test_std_ratio.cpp',
+  'typeout/type/std/test_std_tuple.cpp',
 ]
 
 #############################################################################
