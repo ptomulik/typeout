@@ -564,7 +564,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_BITSET 
 /** // doc: TYPEOUT_SUPPORT_STD_CHRONO {{{
- * \brief Whether to support types from c++x11 \c &lt;chrono&gt header.
+ * \brief Whether to support types from c++x11 \c &lt;chrono&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from \c &lt;chrono&gt; header.
@@ -601,7 +601,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_CHRONO
 /** // doc: TYPEOUT_SUPPORT_STD_CLOCALE {{{
- * \brief Whether to support things from &le;clocale&gt; header.
+ * \brief Whether to support things from &lt;clocale&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from &lt;clocale&gt; header.
@@ -636,7 +636,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_CLOCALE 
 /** // doc: TYPEOUT_SUPPORT_STD_CMATH {{{
- * \brief Whether to support things from &le;cmath&gt; header.
+ * \brief Whether to support things from &lt;cmath&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from &lt;cmath&gt; header.
@@ -671,7 +671,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_CMATH 
 /** // doc: TYPEOUT_SUPPORT_STD_COMPLEX {{{
- * \brief Whether to support things from &le;complex&gt; header.
+ * \brief Whether to support things from &lt;complex&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from &lt;complex&gt; header.
@@ -706,7 +706,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_COMPLEX 
 /** // doc: TYPEOUT_SUPPORT_STD_CONDITION_VARIABLE {{{
- * \brief Whether to support typed from c++x11 &lt;condition_variable&gt header.
+ * \brief Whether to support typed from c++x11 &lt;condition_variable&gt; header.
  *
  * This directive tells the \c typeout whether to enable support for types
  * from &lt;condition_variable&lt; header.
@@ -744,7 +744,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_CONDITION_VARIABLE
 /** // doc: TYPEOUT_SUPPORT_STD_CTIME {{{
- * \brief Whether to support things from &le;ctime&gt; header.
+ * \brief Whether to support things from &lt;ctime&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from &lt;ctime&gt; header.
@@ -779,7 +779,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_CTIME 
 /** // doc: TYPEOUT_SUPPORT_STD_CWCHAR {{{
- * \brief Whether to support types from c++x11 \c &lt;cwchar&gt header.
+ * \brief Whether to support types from c++x11 \c &lt;cwchar&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from \c &lt;cwchar&gt; header.
@@ -850,7 +850,7 @@
  */ // }}}
 # define TYPEOUT_SUPPORT_STD_DEQUE 
 /** // doc: TYPEOUT_SUPPORT_STD_MEMORY {{{
- * \brief Whether to support things from &le;memory&gt; header.
+ * \brief Whether to support things from &lt;memory&gt; header.
  *
  * This directive tells the \c typeout whether to enable code that involves
  * types from &lt;memory&gt; header.

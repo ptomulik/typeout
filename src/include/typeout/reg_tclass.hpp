@@ -86,13 +86,13 @@
  * \note Don't put semicolon at the end of macro invocation.
  *
  * The \c tparams is a sequence of template parameter types. The word 
- * \e sequence has same meaning as in boost preprocessor library, i.e. a
+ * \e sequence has same meaning as in boost preprocessor library, i.e. the
  * sequence has form
- * \code
- *  (a1)(a2)...(an)
- * \endcode
- * where \c ai are consecutive elements in sequence. The currently supported
- * elements are
+   \code
+    (a1)(a2)...(an)
+   \endcode
+ * where \c ai (\c a1 .. \c an) is an elements of sequence. The currently
+ * supported elements are
  *
  * - \c class or \c typename, for type template parameters,
  * - \c const (\e type), for non-type template parameters (usually integral
@@ -156,9 +156,9 @@ namespace typeout { namespace _type { \
  * The \c tparams is a sequence of template parameter types. The word 
  * \e sequence has same meaning as in boost preprocessor library, i.e. a
  * sequence has form
- * \code
- *  (a1)(a2)...(an)
- * \endcode
+   \code
+    (a1)(a2)...(an)
+   \endcode
  * where \c ai are consecutive elements in sequence. The currently supported
  * elements are
  *
@@ -215,9 +215,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * By "template class having only type-parameters" we mean following templates
- * \code
- * template <typename T1,typename T2,...> class foo;
- * \endcode
+   \code
+   template <typename T1,typename T2,...> class foo;
+   \endcode
  * where you may also use \c class keyword instead of \c typename in the
  * template parameter list. Such class templates may be registered by providing
  * just the name and the number of template parameters in use. This is
@@ -228,9 +228,9 @@ namespace typeout { namespace _type { \
  *
  * \note This macro does not support template type parameters, i.e. classes
  *       declared as:
- * \code
- * template <template <...> class, template <...> class, ... > class foo;
- * \endcode
+   \code
+   template <template <...> class, template <...> class, ... > class foo;
+   \endcode
  *      are not supported.
  *
  * Variadic templates might be handled by registering them several times with
@@ -273,9 +273,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * By "template class having only type-parameters" we mean following templates
- * \code
- * template <typename T1,typename T2,...> class foo;
- * \endcode
+   \code
+   template <typename T1,typename T2,...> class foo;
+   \endcode
  * where you may also use \c class keyword instead of \c typename in the
  * template parameter list. Such class templates may be registered by providing
  * just the name and the number of template parameters in use. This is
@@ -286,9 +286,9 @@ namespace typeout { namespace _type { \
  *
  * \note This macro does not support template type parameters, i.e. classes
  *       declared as:
- * \code
- * template <template <...> class, template <...> class, ... > class foo;
- * \endcode
+   \code
+   template <template <...> class, template <...> class, ... > class foo;
+   \endcode
  *      are not supported.
  *
  *
@@ -337,9 +337,9 @@ namespace typeout { namespace _type { \
  *
  * By "template class having only non-type parameters" we mean following
  * templates
- * \code
- * template <type t1, type t2,...> class foo;
- * \endcode
+   \code
+   template <type t1, type t2,...> class foo;
+   \endcode
  * where \c type represents type of non-type template parameter, which may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
  * 
@@ -397,9 +397,9 @@ namespace typeout { namespace _type { \
  *
  * By "template class having only non-type parameters" we mean following
  * templates
- * \code
- * template <type t1, type t2,...> class foo;
- * \endcode
+   \code
+   template <type t1, type t2,...> class foo;
+   \endcode
  * where \c type represents type of non-type template parameter, which may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
  * 
@@ -461,9 +461,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * This macro is designed to register template classes with signatures as
- * \code
- * template <class T_1, ..., class T_nt, type t_1, ..., type t_nn> class foo;
- * \endcode
+   \code
+   template <class T_1, ..., class T_nt, type t_1, ..., type t_nn> class foo;
+   \endcode
  * First \c nt parameters are type-parameters. These parameters are followed by
  * \c nn non-type parameters of same \c type. The \c type may be (according to
  * N3485 draft of c++11 standard, 14.1.4, [temp.param]):
@@ -520,9 +520,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * This macro is designed to register template classes with signatures as
- * \code
- * template <class T_1, ..., class T_nt, type t_1, ..., type t_nn> class foo;
- * \endcode
+   \code
+   template <class T_1, ..., class T_nt, type t_1, ..., type t_nn> class foo;
+   \endcode
  * First \c nt parameters are type-parameters. These parameters are followed by
  * \c nn non-type parameters of same \c type. The \c type may be (according to
  * N3485 draft of c++11 standard, 14.1.4, [temp.param]):
@@ -581,9 +581,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * This macro is designed to register template classes with signatures as
- * \code
- * template <type t_1, ..., type t_nn, class T_1, ..., class T_nt> class foo;
- * \endcode
+   \code
+   template <type t_1, ..., type t_nn, class T_1, ..., class T_nt> class foo;
+   \endcode
  * First \c nn parameters are non-type parameters of same \c type. These
  * parameters are followed by \c nt type-parameters. The \c type may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
@@ -640,9 +640,9 @@ namespace typeout { namespace _type { \
  * \note Don't put semicolon at the end of macro invocation.
  *
  * This macro is designed to register template classes with signatures as
- * \code
- * template <type t_1, ..., type t_nn, class T_1, ..., class T_nt> class foo;
- * \endcode
+   \code
+   template <type t_1, ..., type t_nn, class T_1, ..., class T_nt> class foo;
+   \endcode
  * First \c nn parameters are non-type parameters of same \c type. These
  * parameters are followed by \c nt type-parameters. The \c type may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
@@ -700,9 +700,9 @@ namespace typeout { namespace _type { \
  *
  * This macro is useful when registering variadic class templates. It is
  * designed to register the class templates with signatures such as:
- * \code
- * template <class...> class foo;
- * \endcode
+   \code
+   template <class...> class foo;
+   \endcode
  *
  * If you plan to use (i.e. retrieve the name of) specializations of such
  * templates with different number of arguments, for example with 1 to 3
@@ -732,9 +732,9 @@ namespace typeout { namespace _type { \
  *
  * This macro is useful when registering variadic class templates. It is
  * designed to register the class templates with signatures such as:
- * \code
- * template <type...> class foo;
- * \endcode
+   \code
+   template <type...> class foo;
+   \endcode
  * The \c type may be (according to N3485 draft of c++11 standard, 14.1.4,
  * [temp.param]):
  * 
