@@ -53,10 +53,11 @@ test_cpp_files = [
   'typeout/type/std/test_std_ctime.cpp',
   'typeout/type/std/test_std_cwchar.cpp',
   'typeout/type/std/test_std_deque.cpp',
-
   'typeout/type/std/test_std_memory.cpp',
   'typeout/type/std/test_std_ratio.cpp',
   'typeout/type/std/test_std_tuple.cpp',
+# boost::
+  'typeout/type/boost/test_boost_tuple.cpp',
 ]
 
 #############################################################################

@@ -20,27 +20,40 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/type/std/tuple.hpp
-
-/** // doc: typeout/type/std/tuple.hpp {{{ 
- * \file typeout/type/std/tuple.hpp
+/** // doc: typeout/type/test_fundamental.cpp {{{
+ * \file typeout/type/test_fundamental.cpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED
-#define TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED
+#include <typeout/test_config.hpp>
+#if TYPEOUT_TEST_TYPE_BOOST_TUPLE_ENABLED
 
-#include <typeout/config.hpp>
-#include <typeout/reg_tclass.hpp>
-#include <typeout/reg_type.hpp>
+#include <typeout/type/boost/tuple.hpp>
+#include <typeout/type/fundamental.hpp>
+#include <boost/test/unit_test.hpp>
 
-#if !TYPEOUT_NO_STD_HDR_TUPLE
-#include <tuple>
-# if TYPEOUT_SUPPORT_STD_TUPLE
-TYPEOUT_REG_TYPE(std::tuple < >)
-TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE(std::tuple,1,TYPEOUT_STD_TUPLE_ARGS_MAX)
-# endif /* TYPEOUT_SUPPORT_STD_TUPLE */
-#endif /* TYPEOUT_NO_STD_HDR_TUPLE */
+#include <sstream>
 
-#endif /* TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED */
+BOOST_AUTO_TEST_SUITE(test_type_boost_tuple_unit)
+
+template <typename T>
+std::string _s()
+{
+  std::stringstream ss;
+  typeout::_type::_<T>::write(ss);
+  return ss.str();
+}
+
+BOOST_AUTO_TEST_CASE(type_names)
+{
+  /* Integral types */
+  BOOST_CHECK_EQUAL((_s< boost::tuple<> >()),   "boost::tuple < >");
+  BOOST_CHECK_EQUAL((_s< boost::tuple<char> >()),   "boost::tuple < char >");
+  BOOST_CHECK_EQUAL((_s< boost::tuple<char,int> >()),   "boost::tuple < char, int >");
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+#endif /* TYPEOUT_TEST_TYPE_BOOST_TUPLE_ENABLED */
+
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

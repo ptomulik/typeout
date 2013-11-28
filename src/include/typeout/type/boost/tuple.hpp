@@ -20,27 +20,27 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/type/std/tuple.hpp
+// typeout/type/boost/tuple.hpp
 
-/** // doc: typeout/type/std/tuple.hpp {{{ 
- * \file typeout/type/std/tuple.hpp
+/** // doc: typeout/type/boost/tuple.hpp {{{ 
+ * \file typeout/type/boost/tuple.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED
-#define TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED
+#ifndef TYPEOUT_TYPE_BOOST_TUPLE_HPP_INCLUDED
+#define TYPEOUT_TYPE_BOOST_TUPLE_HPP_INCLUDED
 
 #include <typeout/config.hpp>
 #include <typeout/reg_tclass.hpp>
 #include <typeout/reg_type.hpp>
 
-#if !TYPEOUT_NO_STD_HDR_TUPLE
-#include <tuple>
-# if TYPEOUT_SUPPORT_STD_TUPLE
-TYPEOUT_REG_TYPE(std::tuple < >)
-TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE(std::tuple,1,TYPEOUT_STD_TUPLE_ARGS_MAX)
-# endif /* TYPEOUT_SUPPORT_STD_TUPLE */
-#endif /* TYPEOUT_NO_STD_HDR_TUPLE */
+#if !TYPEOUT_NO_BOOST_HDR_TUPLE
+#include <boost/tuple/tuple.hpp>
+# if TYPEOUT_SUPPORT_BOOST_TUPLE
+TYPEOUT_REG_TYPE(boost::tuple < >)
+TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE(boost::tuple,1,TYPEOUT_BOOST_TUPLE_ARGS_MAX)
+# endif /* TYPEOUT_SUPPORT_BOOST_TUPLE */
+#endif /* TYPEOUT_NO_BOOST_HDR_TUPLE */
 
-#endif /* TYPEOUT_TYPE_STD_TUPLE_HPP_INCLUDED */
+#endif /* TYPEOUT_TYPE_BOOST_TUPLE_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:
