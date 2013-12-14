@@ -25,7 +25,10 @@ import SCons.Util
 #############################################################################
 # C++ programs that should be build (and run)
 test_cpp_files = [
+  'typeout/test_tpack.cpp',
+
   'typeout/type/test_fundamental.cpp',
+  'typeout/type/test_fptr.cpp',
   'typeout/type/test_partial_specs_cv.cpp',
   'typeout/type/test_partial_specs_ptr.cpp',
   'typeout/type/test_partial_specs_ref.cpp',
@@ -41,6 +44,8 @@ test_cpp_files = [
   'typeout/type/test_partial_specs_ext2_cv_ptr.cpp',
   'typeout/type/test_partial_specs_ext2_ptr_cv.cpp',
   'typeout/type/test_partial_specs_ext2_cv_ptr_cv.cpp',
+
+  'typeout/tvalue/test_fptr.cpp',
 # std::
   'typeout/type/std/test_std_array.cpp',
   'typeout/type/std/test_std_atomic.cpp',

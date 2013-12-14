@@ -35,6 +35,7 @@
 
 namespace typeout {
 namespace _tvalue {
+/*
 template <typename T, T* t>
 struct _<T*,t>
 {
@@ -42,6 +43,7 @@ struct _<T*,t>
   static void write(Ostream& os)
   { os << "(" << typeout::_<T*> << ")" << (void*)t; }
 };
+*/
 } /* namesapce _tvalue */
 } /* namespace typeout */
 

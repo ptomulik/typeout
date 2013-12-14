@@ -25,45 +25,40 @@
  * \todo Write documentation
  */ // }}}
 #include <typeout/test_config.hpp>
-#if TYPEOUT_TEST_STREAMOUT_ENABLED
+#if TYPEOUT_TEST_TPACK_ENABLED
 
-#include <typeout/write.hpp>
+#include <typeout/tpack.hpp>
 #include <typeout/reg_type.hpp>
-
 #include <boost/test/unit_test.hpp>
 
 TYPEOUT_REG_TYPE(char)
+TYPEOUT_REG_TYPE(int)
 
-BOOST_AUTO_TEST_SUITE(test_streamout_unit)
+BOOST_AUTO_TEST_SUITE(test_tpack_unit)
 
-template <typename T>
-std::string rtstr_of()
+template <class...Args>
+std::string _s()
 {
-  using namespace typeout;
   std::stringstream ss;
-  ss << _streamout::_<T>;
+  typeout::_tpack::_<Args...>::write(ss);
   return ss.str();
 }
 
-template <typename T, T t>
-std::string rtstr_of()
+BOOST_AUTO_TEST_CASE(zero_args)
 {
-  using namespace typeout;
-  std::stringstream ss;
-  _streamout::_(ss,t);
-  return ss.str();
+  BOOST_CHECK_EQUAL(_s<>(), "");
 }
-
-BOOST_AUTO_TEST_CASE(types)
+BOOST_AUTO_TEST_CASE(one_arg)
 {
-  BOOST_CHECK_EQUAL(rtstr_of<char>(), "char");
+  BOOST_CHECK_EQUAL(_s<char>(), "char");
+  BOOST_CHECK_EQUAL(_s<int>(), "int");
 }
-#if 0
-BOOST_AUTO_TEST_CASE(integrals)
+BOOST_AUTO_TEST_CASE(multiple_args)
 {
-  BOOST_CHECK_EQUAL((rtstr_of<int,-1>()), "1");
+  BOOST_CHECK_EQUAL((_s<char,int>()), "char, int");
+  BOOST_CHECK_EQUAL((_s<int,char>()), "int, char");
+  BOOST_CHECK_EQUAL((_s<int,char,char>()), "int, char, char");
 }
-#endif
 BOOST_AUTO_TEST_SUITE_END()
 
 

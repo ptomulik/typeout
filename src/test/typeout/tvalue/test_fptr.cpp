@@ -20,33 +20,48 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/partial_specs_ref.hpp
-
-/** // doc: typeout/tvalue/partial_specs_ref.hpp {{{ 
- * \file typeout/tvalue/partial_specs_ref.hpp
+/** // doc: typeout/tvalue/test_fptr.cpp {{{
+ * \file typeout/tvalue/test_fptr.cpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
-#define TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
+#include <typeout/test_config.hpp>
+#if TYPEOUT_TEST_TYPE_FPTR_ENABLED
 
-#include <typeout/config.hpp>
 #include <typeout/tvalue/class.hpp>
-#include <typeout/stream.hpp>
+#include <typeout/type/fundamental.hpp>
+#include <typeout/type/fptr.hpp>
+//#include <typeout/tvalue/partial_specs.hpp>
 
-namespace typeout {
-namespace _tvalue {
-/*
-template <typename T, T& t>
-struct _<T&,t>
+#include <boost/test/unit_test.hpp>
+
+#include <sstream>
+
+BOOST_AUTO_TEST_SUITE(test_tvalue_fptr_unit)
+
+template <typename T>
+std::string _s()
 {
-  template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(" << typeout::_<T&> << ")" << t; }
-};
-*/
-} /* namesapce _tvalue */
-} /* namespace typeout */
+  std::stringstream ss;
+  typeout::_tvalue::_<T>::write(ss,(T)0);
+  return ss.str();
+}
 
-#endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED */
+BOOST_AUTO_TEST_CASE(type_names)
+{
+  BOOST_CHECK_EQUAL((_s<void(*)()>()),"(void(*)())0");
+  /*
+  BOOST_CHECK_EQUAL((_s<void(*)(void)>()),"(void(*)())0");
+  BOOST_CHECK_EQUAL((_s<void(*)(int)>()),"(void(*)(int))0");
+  BOOST_CHECK_EQUAL((_s<void(*)(int,char)>()),"void(*)(int, char)0");
+  BOOST_CHECK_EQUAL((_s<void(*)(int&,char*)>()),"void(*)(int&, char*)0");
+  BOOST_CHECK_EQUAL((_s<int(*)()>()), "int(*)()0");
+  BOOST_CHECK_EQUAL((_s<char&(*)(int const&)>()), "char&(*)(int const&)0");
+  */
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+#endif /* TYPEOUT_TEST_TYPE_FPTR_ENABLED */
+
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

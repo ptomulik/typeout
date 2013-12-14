@@ -34,7 +34,7 @@
 
 namespace typeout {
 namespace _tvalue {
-
+/*
 template <typename T, T const t>
 struct _<T const, t>
 {
@@ -58,7 +58,7 @@ struct _<T const volatile, t>
   static void write(Ostream& os)
   { _<T,t>::write(os); }
 };
-
+*/
 } /*namespace _tvalue */
 } /* namespace typeout */
 

@@ -30,16 +30,20 @@
 #define TYPEOUT_TVALUE_CLASS_HPP_INCLUDED
 
 #include <typeout/config.hpp>
+#include <typeout/type/class.hpp>
 
 namespace typeout {
 namespace _tvalue {
 
-template <typename T, T t>
+template <typename T>
 struct _
 {
   template <class Ostream>
-  static void write (Ostream& os)
-  { os << t; }
+  static void write (Ostream& os, T t)
+  { 
+    os << "("; _type::_<T>::write(os); os << ")";
+    os << t;
+  }
 };
 
 } /* namespace _tvalue */

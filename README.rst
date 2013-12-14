@@ -19,8 +19,8 @@ subject to changes. The current status is thus *experimental*.
 
 Things that work:
 
-  - registering fundamental c++ types (actually fundamental c++ types are
-    already pre-registered),
+  - fundamental c++ types (fundamental c++ types are pre-registered),
+  - function pointers (work out of box),
   - registering custom classes and structures,
   - registering template classes (with type and non-type parameters),
   - handling cv-qualified types, references, pointers and array extents for each
@@ -33,7 +33,7 @@ Things that are missing:
     std::tuple and so on,
   - good support for integral values, pointers and references as template
     parameters, and other non-type template parameters,
-  - registering function types, function pointers, function templates, and so on,
+  - registering function types, function templates, and so on,
   - support for templates as template parameters in macros used to register types,
   - direct streaming to boost::unit_test::lazy_ostream used by
     ``BOOST_TEST_MESSAGE()``; currently printing-out type names through this

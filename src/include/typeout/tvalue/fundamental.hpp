@@ -36,137 +36,112 @@ namespace typeout {
 namespace _tvalue {
 
 template <>
-struct _<bool, true>
+struct _<bool>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(bool)true"; }
+  static void write(Ostream& os, bool x)
+  { os << x ? "true" : "false"; }
 };
 
 template <>
-struct _<bool, false>
+struct _<char>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(bool)false"; }
-};
-
-template <char t>
-struct _<char, t>
-{
-  template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(char)\'" << t << "\'"; }
+  static void write(Ostream& os, char t)
+  { os << "\'" << t << "\'"; }
 };
 
 #if TYPEOUT_SUPPORT_CHAR16_T
-template <char16_t t>
-struct _<char16_t, t>
+template <>
+struct _<char16_t>
 {
   template <class Ostream>
-  static void write(Ostream& os)
+  static void write(Ostream& os,char16_t t)
   { os << "(char16_t)\'" << t << "\'"; }
 };
 #endif
 
 #if TYPEOUT_SUPPORT_CHAR32_T
-template <char32_t t>
-struct _<char32_t, t>
+template <>
+struct _<char32_t>
 {
   template <class Ostream>
-  static void write(Ostream& os)
+  static void write(Ostream& os, char32_t t)
   { os << "(char32_t)\'" << t << "\'"; }
 };
 #endif
 
-template <wchar_t t>
-struct _<wchar_t, t>
+template <>
+struct _<wchar_t>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(wchar_t)\'" << t << "\'"; }
+  static void write(Ostream& os, wchar_t t)
+  { os << "L\'" << t << "\'"; }
 };
 
-template <signed char t>
-struct _<signed char, t>
+template <>
+struct _<signed char>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(signed char)\'" << t << "\'"; }
+  static void write(Ostream& os, signed char t)
+  { os << "\'" << t << "\'"; }
 };
 
-template <short int t>
-struct _<short int, t>
+template <>
+struct _<short int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
+  static void write(Ostream& os, short int t)
   { os << "(short int)" << t; }
 };
 
-template <int t>
-struct _<int, t>
+template <>
+struct _<int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(int)" << t; }
+  static void write(Ostream& os, int t)
+  { os <<  t; }
 };
 
-template <long int t>
-struct _<long int, t>
+template <>
+struct _<long int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(long int)" << t; }
+  static void write(Ostream& os, long int t)
+  { os << t << "l"; }
 };
 
-template <long long int t>
-struct _<long long int, t>
+template <>
+struct _<long long int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(long long int)" << t; }
+  static void write(Ostream& os, long long int t)
+  { os << t << "ll"; }
 };
 
-template <unsigned char t>
-struct _<unsigned char, t>
+template <>
+struct _<unsigned char>
 {
   template <class Ostream>
-  static void write(Ostream& os)
+  static void write(Ostream& os, unsigned char t)
   { os << "(unsigned char)\'" << t << "\'"; }
 };
 
-template <unsigned short int t>
-struct _<unsigned short int, t>
+template <>
+struct _<unsigned int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(unsigned short int)" << t; }
+  static void write(Ostream& os, unsigned int t)
+  { os << t << "u"; }
 };
 
-template <unsigned int t>
-struct _<unsigned int, t>
+template <>
+struct _<unsigned long int>
 {
   template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(unsigned int)" << t; }
+  static void write(Ostream& os, unsigned long int t)
+  { os << t << "ul"; }
 };
-
-template <unsigned long int t>
-struct _<unsigned long int, t>
-{
-  template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(unsigned long int)" << t; }
-};
-
-template <unsigned long long int t>
-struct _<unsigned long long int, t>
-{
-  template <class Ostream>
-  static void write(Ostream& os)
-  { os << "(unsigned long long int)" << t; }
-};
-
 } /* namespace _tvalue */
 } /* namespace typeout */
 

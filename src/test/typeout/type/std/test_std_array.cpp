@@ -29,6 +29,7 @@
 
 #include <typeout/type/std/array.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/tvalue/fundamental.hpp>
 #include <boost/test/unit_test.hpp>
 
 #include <sstream>
@@ -46,33 +47,33 @@ std::string _s()
 BOOST_AUTO_TEST_CASE(type_names)
 {
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::array<char,1> >()),"std::array < char, 1 >");
-  BOOST_CHECK_EQUAL((_s<std::array<char,2> >()),"std::array < char, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<char,3> >()),"std::array < char, 3 >");
-  BOOST_CHECK_EQUAL((_s<std::array<bool,2> >()),"std::array < bool, 2 >");
+  BOOST_CHECK_EQUAL((_s<std::array<char,1ul> >()),"std::array < char, 1ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<char,2ul> >()),"std::array < char, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<char,3ul> >()),"std::array < char, 3ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<bool,2ul> >()),"std::array < bool, 2ul >");
 
 #if TYPEOUT_SUPPORT_CHAR16_T
-  BOOST_CHECK_EQUAL((_s<std::array<char16_t,2> >()),"std::array < char16_t, 2 >");
+  BOOST_CHECK_EQUAL((_s<std::array<char16_t,2ul> >()),"std::array < char16_t, 2ul >");
 #endif
 #if TYPEOUT_SUPPORT_CHAR32_T
-  BOOST_CHECK_EQUAL((_s<std::array<char32_t,2> >()),"std::array < char32_t, 2 >");
+  BOOST_CHECK_EQUAL((_s<std::array<char32_t,2ul> >()),"std::array < char32_t, 2ul >");
 #endif
 
-  BOOST_CHECK_EQUAL((_s<std::array<wchar_t,2> >()),"std::array < wchar_t, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<signed char,2> >()),"std::array < signed char, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<short int,2> >()),"std::array < short int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<int,2> >()),"std::array < int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<long int,2> >()),"std::array < long int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<long long int,2> >()),"std::array < long long int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<unsigned char,2> >()),"std::array < unsigned char, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<unsigned short int,2> >()),"std::array < unsigned short int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<unsigned int,2> >()),"std::array < unsigned int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<unsigned long int,2> >()),"std::array < unsigned long int, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<unsigned long long int,2> >()),"std::array < unsigned long long int, 2 >");
+  BOOST_CHECK_EQUAL((_s<std::array<wchar_t,2ul> >()),"std::array < wchar_t, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<signed char,2ul> >()),"std::array < signed char, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<short int,2ul> >()),"std::array < short int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<int,2ul> >()),"std::array < int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<long int,2ul> >()),"std::array < long int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<long long int,2ul> >()),"std::array < long long int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<unsigned char,2ul> >()),"std::array < unsigned char, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<unsigned short int,2ul> >()),"std::array < unsigned short int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<unsigned int,2ul> >()),"std::array < unsigned int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<unsigned long int,2ul> >()),"std::array < unsigned long int, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<unsigned long long int,2ul> >()),"std::array < unsigned long long int, 2ul >");
 
   /* floating point types */
-  BOOST_CHECK_EQUAL((_s<std::array<float,2> >()),"std::array < float, 2 >");
-  BOOST_CHECK_EQUAL((_s<std::array<double,2> >()),"std::array < double, 2 >");
+  BOOST_CHECK_EQUAL((_s<std::array<float,2ul> >()),"std::array < float, 2ul >");
+  BOOST_CHECK_EQUAL((_s<std::array<double,2ul> >()),"std::array < double, 2ul >");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

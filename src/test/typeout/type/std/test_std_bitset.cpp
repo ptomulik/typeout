@@ -29,6 +29,7 @@
 
 #include <typeout/type/std/bitset.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/tvalue/fundamental.hpp>
 #include <boost/test/unit_test.hpp>
 
 #include <sstream>
@@ -46,8 +47,8 @@ std::string _s()
 BOOST_AUTO_TEST_CASE(type_names)
 {
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::bitset<1> >()),"std::bitset < 1 >");
-  BOOST_CHECK_EQUAL((_s<std::bitset<2> >()),"std::bitset < 2 >");
+  BOOST_CHECK_EQUAL((_s<std::bitset<1ul> >()),"std::bitset < 1ul >");
+  BOOST_CHECK_EQUAL((_s<std::bitset<2ul> >()),"std::bitset < 2ul >");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

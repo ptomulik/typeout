@@ -20,33 +20,46 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/partial_specs_ref.hpp
+// typeout/tpack.hpp
 
-/** // doc: typeout/tvalue/partial_specs_ref.hpp {{{ 
- * \file typeout/tvalue/partial_specs_ref.hpp
+/** // doc: typeout/tpack.hpp {{{ 
+ * \file typeout/tpack.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
-#define TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
+#ifndef TYPEOUT_TPACK_HPP_INCLUDED
+#define TYPEOUT_TPACK_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/tvalue/class.hpp>
-#include <typeout/stream.hpp>
+#include <typeout/type/class.hpp>
 
 namespace typeout {
-namespace _tvalue {
-/*
-template <typename T, T& t>
-struct _<T&,t>
+namespace _tpack {
+
+template <class...> struct _;
+
+template <class T, class...Tail>
+struct _<T,Tail...>
 {
-  template <class Ostream>
+  template<typename Ostream>
   static void write(Ostream& os)
-  { os << "(" << typeout::_<T&> << ")" << t; }
+  { _<T>::write(os); os << ", "; _<Tail...>::write(os); }
 };
-*/
-} /* namesapce _tvalue */
+template <class T>
+struct _<T>
+{
+  template<typename Ostream>
+  static void write(Ostream& os)
+  { _type::_<T>::write(os); }
+};
+template <>
+struct _<>
+{
+  template<typename Ostream>
+  static void write(Ostream&) { }
+};
+
+} /* namespace _tpack */
 } /* namespace typeout */
 
-#endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED */
+#endif /* TYPEOUT_TPACK_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

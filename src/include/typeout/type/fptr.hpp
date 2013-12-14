@@ -20,33 +20,37 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/partial_specs_ref.hpp
+// typeout/type/fptr.hpp
 
-/** // doc: typeout/tvalue/partial_specs_ref.hpp {{{ 
- * \file typeout/tvalue/partial_specs_ref.hpp
+/** // doc: typeout/type/fptr.hpp {{{ 
+ * \file typeout/type/fptr.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
-#define TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
+#ifndef TYPEOUT_TYPE_FPTR_HPP_INCLUDED
+#define TYPEOUT_TYPE_FPTR_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/tvalue/class.hpp>
-#include <typeout/stream.hpp>
+#include <typeout/type/class.hpp>
+#include <typeout/tpack.hpp>
 
 namespace typeout {
-namespace _tvalue {
-/*
-template <typename T, T& t>
-struct _<T&,t>
+namespace _type {
+
+template <class T, class... Args>
+struct _ <T(*)(Args...)>
 {
-  template <class Ostream>
+  template <typename Ostream>
   static void write(Ostream& os)
-  { os << "(" << typeout::_<T&> << ")" << t; }
+  {
+    _<T>::write(os);
+    os << "(*)(";
+      _tpack::_<Args...>::write(os);
+    os << ")";
+  }
 };
-*/
-} /* namesapce _tvalue */
+
+}
 } /* namespace typeout */
 
-#endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED */
+#endif /* TYPEOUT_TYPE_FPTR_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

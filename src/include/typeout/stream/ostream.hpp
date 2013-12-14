@@ -48,7 +48,7 @@ template <typename T, T t, class CharT, class Traits>
 std::basic_ostream<CharT, Traits>& 
 _ (std::basic_ostream<CharT, Traits>& os)
 {
-  ::typeout::_tvalue::_<T,t>::write(os);
+  ::typeout::_tvalue::_<T>::write(os,t);
   return os;
 }
 } /* namespace _ostream */
