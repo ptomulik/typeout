@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,10 +42,10 @@ BOOST_AUTO_TEST_CASE(std_memory)
   BOOST_CHECK_EQUAL((_<std::allocator < int > >()),"std::allocator < int >");
   BOOST_CHECK_EQUAL((_<std::allocator < double > >()),"std::allocator < double >");
 # if TYPEOUT_SUPPORT_CXX11_ALLOCATOR
-  BOOST_CHECK_EQUAL((_<std::allocator_traits < std::allocator < int > > >()), 
+  BOOST_CHECK_EQUAL((_<std::allocator_traits < std::allocator < int > > >()),
                        "std::allocator_traits < std::allocator < int > >");
   BOOST_CHECK_EQUAL((_<std::allocator_arg_t>()), "std::allocator_arg_t");
-  BOOST_CHECK_EQUAL((_<std::uses_allocator < int*, std::allocator < int > > >()), 
+  BOOST_CHECK_EQUAL((_<std::uses_allocator < int*, std::allocator < int > > >()),
                        "std::uses_allocator < int*, std::allocator < int > >");
 # endif
   BOOST_CHECK_EQUAL((_<std::auto_ptr < int > >()),"std::auto_ptr < int >");

@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
 
 // typeout/type/partial_specs_ext.hpp
 
-/** // doc: typeout/type/partial_specs_ext.hpp {{{ 
+/** // doc: typeout/type/partial_specs_ext.hpp {{{
  * \file typeout/type/partial_specs_ext.hpp
  * \todo Write documentation
  */ // }}}
@@ -74,7 +74,7 @@ struct _extents_helper<void,0>
 template <typename T, std::size_t N>
 struct _array_helper
 {
-  typedef _extents_helper<void,N> extents; 
+  typedef _extents_helper<void,N> extents;
   typedef T type_noext;
 };
 
@@ -83,7 +83,7 @@ template <typename T, std::size_t N, std::size_t M>
 struct _array_helper<T[N],M>
 {
   typedef typename _array_helper<T,N>::type_noext type_noext;
-  typedef _extents_helper<typename _array_helper<T,N>::extents,M> extents; 
+  typedef _extents_helper<typename _array_helper<T,N>::extents,M> extents;
 };
 
 template <typename T>

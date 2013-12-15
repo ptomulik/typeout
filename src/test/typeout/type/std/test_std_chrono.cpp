@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,9 +42,9 @@ BOOST_AUTO_TEST_CASE(std_chrono)
   BOOST_CHECK_EQUAL((_<std::chrono::system_clock >()), "std::chrono::system_clock");
   BOOST_CHECK_EQUAL((_<std::chrono::steady_clock >()), "std::chrono::steady_clock");
 //  BOOST_CHECK_EQUAL((_<std::chrono::high_resolution_clock >()),"std::chrono::high_resolution_clock");
-  BOOST_CHECK_EQUAL((_<std::chrono::treat_as_floating_point < int > >()), 
+  BOOST_CHECK_EQUAL((_<std::chrono::treat_as_floating_point < int > >()),
                        "std::chrono::treat_as_floating_point < int >");
-  BOOST_CHECK_EQUAL((_<std::chrono::duration_values < int > >()), 
+  BOOST_CHECK_EQUAL((_<std::chrono::duration_values < int > >()),
                        "std::chrono::duration_values < int >");
   BOOST_CHECK_EQUAL((_<std::chrono::duration<unsigned int, std::nano> >()), "std::chrono::duration < unsigned int, std::nano >");
   BOOST_CHECK_EQUAL((_<std::chrono::time_point < std::chrono::system_clock, std::chrono::duration < unsigned int, std::nano > > >()),

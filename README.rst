@@ -20,7 +20,7 @@ subject to changes. The current status is thus *experimental*.
 Things that work:
 
   - fundamental c++ types (fundamental c++ types are pre-registered),
-  - function pointers (work out of box),
+  - function pointers (work out of box) and registered function pointers,
   - registering custom classes and structures,
   - registering template classes (with type and non-type parameters),
   - handling cv-qualified types, references, pointers and array extents for each
@@ -29,8 +29,7 @@ Things that work:
 
 Things that are missing:
 
-  - preregistered types from most standard library, e.g. std::string,
-    std::tuple and so on,
+  - preregistered types from most standard library, e.g. std::string, and so on,
   - good support for integral values, pointers and references as template
     parameters, and other non-type template parameters,
   - registering function types, function templates, and so on,
@@ -45,6 +44,7 @@ REQUIREMENTS
 
 The **typeout** library has following dependencies:
 
+  - ``gcc`` (4.8.2 or later) or ``clang`` (3.3 or later)
   - `Boost Config`_ is used to configure the internals and features of the library,
     you need it each time you use the **typeout** library,
   - `Boost Preprocessor`_ is used by several preprocessor macros, you need it
@@ -54,6 +54,15 @@ The **typeout** library has following dependencies:
   - `Doxygen`_ used to generate API documentation, you'll need it if you plan
     to compile API documentation,
 
+Example installation on debian/ubuntu:
+
+  - ``apt-get install g++-4.8`` for ``gcc``, or
+  - ``apt-get install clang libstdc++-4.8-dev`` for ``clang``,
+  - ``apt-get install libboost-test-dev libboost-dev`` for any compiler,
+  - ``apt-get install doxygen`` if you need build documenation,
+
+Note: we don't use ``libc++-dev`` (a library provided by LLVM) because boost
+testing framework is compiled against ``libstdc++`` and we must use the same.
 
 MOTIVATION
 ----------
@@ -123,7 +132,7 @@ instantiation of complicated templates.
 
 The **typeout** library provides utilities which basically allow you to
 generate meaningful messages containing previously registered type names, and
-can be used to resolve above debugging issues. 
+can be used to resolve above debugging issues.
 
 SOLUTION
 ````````
@@ -188,7 +197,7 @@ EXAMPLES
 
 Examples may be compiled with::
 
-    scons 
+    scons
 
 The compiled binaries may be found under ``build/examples/``.
 

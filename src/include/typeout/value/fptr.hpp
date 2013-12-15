@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
 
 // typeout/value/fptr.hpp
 
-/** // doc: typeout/value/fptr.hpp {{{ 
+/** // doc: typeout/value/fptr.hpp {{{
  * \file typeout/value/fptr.hpp
  * \todo Write documentation
  */ // }}}
@@ -60,7 +60,7 @@ struct info<T(*)(Args...)>
   static std::map<type, name_type>& instances()
   {
     static std::map<type,name_type> _instances;
-    return _instances; 
+    return _instances;
   }
 
   template <class Ostream>
@@ -68,9 +68,9 @@ struct info<T(*)(Args...)>
   {
     auto it = instances().find(f);
     if(it == instances().end())
-      _type::info<type>::write(os << "(") << ")" 
+      _type::info<type>::write(os << "(") << ")"
         << reinterpret_cast<void*>(reinterpret_cast<std::uintptr_t>(f));
-    else 
+    else
       os << it->second;
     return os;
   }
@@ -85,7 +85,7 @@ private:
 template<typename T, typename...Args>
 void reg_fptr(T(*fptr)(Args...), std::string const& name)
 {
-  typedef info<T(*)(Args...)> X; 
+  typedef info<T(*)(Args...)> X;
   X::instances().insert(std::make_pair(fptr,name));
 }
 

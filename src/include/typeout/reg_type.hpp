@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
 
 // typeout/reg_type.hpp
 
-/** // doc: typeout/reg_type.hpp {{{ 
+/** // doc: typeout/reg_type.hpp {{{
  * \file typeout/reg_type.hpp
  * \brief Preprocessor macro(s) to register new types.
  */ // }}}
@@ -39,7 +39,7 @@
 /** // doc: TYPEOUT_REG_TYPE_AS {{{
  * \brief Register new type using custom name
  * \param type Fully qualified type name, for example <tt>std::size_t</tt>.
- *        It may be a type defined with typedef or alias created with 
+ *        It may be a type defined with typedef or alias created with
  *        \c using keyword.
  * \param as Runtime name of the registered type. Should be string or
  *        expression that yields string at runtime.
@@ -72,7 +72,7 @@ template <> struct info <type> \
 } /* namespace typeout */
 
 /** // doc: TYPEOUT_REG_TYPE {{{
- * \brief Register new type 
+ * \brief Register new type
  * \param type Fully qualified type name, for example <tt>std::size_t</tt>.
  *        The macro accepts types defined with \c typedef and aliases created
  *        with \c using keyword, see notes below.

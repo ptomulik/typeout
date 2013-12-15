@@ -18,12 +18,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE
 
+import os
+
 def BuildVariant(env, variant_dir, src_dir, duplicate = 0, **kw):
     SConscript( '%s/SConscript' % variant_dir, exports = ['env'] )
 
-env = Environment(tools =  [ 'default'
-                           , 'textfile'
-                           , 'doxygen' ] )
+env = Environment( ENV = os.environ, tools =  [ 'default' , 'textfile' , 'doxygen' ] )
+
+# import some environment variables
+for key in ['CC', 'CXX']:
+  try:
+    env[key] = env['ENV'][key]
+  except KeyError:
+    pass
+
+# NOTE: Use only libstdc++ (gcc lib), because boost test shared lib is compiled
+# against it. If you force libc++ here, then test will fail with segfault.
+#if env['CXX'] == 'clang++':
+#  env.Append(CXXFLAGS = ['-stdlib=libc++'])
+#  env.Append(LIBS = ['c++'])
+
 # Variant directories
 variants = [
   { 'variant_dir' : 'build', 

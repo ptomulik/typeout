@@ -1,2 +1,30 @@
-compiler: gcc
-script: "./bin/runtest"
+# Note: we don't install libc++-dev as we must use libstdcX++-4.Y (because
+# boost is compiled against it). If we use libc++-dev, then test suite fails
+# with segfault.
+language: cpp
+compiler:
+  - gcc
+  - clang
+env:
+  global:
+    - UBUNTU_CODENAME=$(lsb_release -c | awk '{print $2}')
+    - GCC_V=4.8
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get -qq update
+  - apt-cache pkgnames g++
+  - apt-cache pkgnames clang
+  - apt-cache pkgnames libboost
+  - apt-cache pkgnames libc++
+install:
+  - if [ "$CC" = 'gcc' ]; then sudo apt-get -qq install "g++-${GCC_V}"; fi
+  - if [ "$CC" = 'gcc' ]; then export CXX="g++-${GCC_V}" CC="gcc-${GCC_V}"; fi
+  - if [ "$CC" = 'clang' ]; then sudo apt-get -qq install "libstdc++-${GCC_V}-dev"; fi
+  - sudo apt-get -qq install libboost-test-dev libboost-test-dev
+before_script:
+  - $CXX --version
+script:
+  - ./bin/runtests
+branches:
+  only:
+    - master

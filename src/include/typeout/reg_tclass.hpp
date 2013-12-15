@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
 
 // typeout/reg_tclass.hpp
 
-/** // doc: typeout/reg_tclass.hpp {{{ 
+/** // doc: typeout/reg_tclass.hpp {{{
  * \file typeout/reg_tclass.hpp
  * \todo Write documentation
  */ // }}}
@@ -64,9 +64,9 @@
 #define TYPEOUT_SEQ_ENUM_TARGS(a,seq) \
   BOOST_PP_SEQ_ENUM(TYPEOUT_SEQ_TARGS(a,seq))
 
-#define TYPEOUT_TPARAM_STREAMOUT_START_typename typeout::_< 
-#define TYPEOUT_TPARAM_STREAMOUT_START_class typeout::_< 
-#define TYPEOUT_TPARAM_STREAMOUT_START_const(type) typeout::_< type, 
+#define TYPEOUT_TPARAM_STREAMOUT_START_typename typeout::_<
+#define TYPEOUT_TPARAM_STREAMOUT_START_class typeout::_<
+#define TYPEOUT_TPARAM_STREAMOUT_START_const(type) typeout::_< type,
 
 #define TYPEOUT_TPARAM_STREAMOUT_START(x) TYPEOUT_TPARAM_STREAMOUT_START_##x
 #define TYPEOUT_SEQ_STREAMOUT_TPARAM(r,a,i,x) \
@@ -77,7 +77,7 @@
 
 /** // doc: TYPEOUT_REG_TCLASS_AS {{{
  * \brief Register template class using custom name
- * \param tpl Name of the class template in the code. 
+ * \param tpl Name of the class template in the code.
  * \param as Name used at runtime to represent class template (string or
  *        expression that yields string at runtime).
  * \param tparams Sequence of template parameter types (see below).
@@ -85,7 +85,7 @@
  * \note The macro must be invoked at global scope (not in any namespace).
  * \note Don't put semicolon at the end of macro invocation.
  *
- * The \c tparams is a sequence of template parameter types. The word 
+ * The \c tparams is a sequence of template parameter types. The word
  * \e sequence has same meaning as in boost preprocessor library, i.e. the
  * sequence has form
    \code
@@ -145,14 +145,14 @@ namespace typeout { namespace _type { \
 } }
 
 /** // doc: TYPEOUT_REG_TCLASS {{{
- * \brief Register template class using original name 
- * \param tpl Name of the class template in the code. 
+ * \brief Register template class using original name
+ * \param tpl Name of the class template in the code.
  * \param tparams Sequence of template parameter types (see below).
  *
  * \note The macro must be invoked at global scope (not in any namespace).
  * \note Don't put semicolon at the end of macro invocation.
  *
- * The \c tparams is a sequence of template parameter types. The word 
+ * The \c tparams is a sequence of template parameter types. The word
  * \e sequence has same meaning as in boost preprocessor library, i.e. a
  * sequence has form
    \code
@@ -220,7 +220,7 @@ namespace typeout { namespace _type { \
  * where you may also use \c class keyword instead of \c typename in the
  * template parameter list. Such class templates may be registered by providing
  * just the name and the number of template parameters in use. This is
- * basically what this macro is provided for. 
+ * basically what this macro is provided for.
  *
  * Note, that there are only \c class/typename parameters in the template
  * parameter list (no non-type parameters).
@@ -235,7 +235,7 @@ namespace typeout { namespace _type { \
  * Variadic templates might be handled by registering them several times with
  * different number of parameters. You have to register as many variants as you
  * need later in your program. This may be easily performed with the macro
- * TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE(). 
+ * TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE().
  *
  * <b>Example 1</b>
  * \snippet reg_tclass_with_tparams_as1.cpp Declaration and Registration
@@ -264,7 +264,7 @@ namespace typeout { namespace _type { \
   TYPEOUT_REG_TCLASS_AS(tpl,as, \
   BOOST_PP_REPEAT(n,TYPEOUT_ALWAYS_REPETITION,(typename)))
 /** // doc: TYPEOUT_REG_TCLASS_WITH_TPARAMS {{{
- * \brief Register template class having only type-parameters. 
+ * \brief Register template class having only type-parameters.
  * \param tpl The name of class template.
  * \param n Number of template parameters used.
  *
@@ -278,7 +278,7 @@ namespace typeout { namespace _type { \
  * where you may also use \c class keyword instead of \c typename in the
  * template parameter list. Such class templates may be registered by providing
  * just the name and the number of template parameters in use. This is
- * basically what this macro is provided for. 
+ * basically what this macro is provided for.
  *
  * Note, that there are only \c class/typename parameters in the template
  * parameter list (no non-type parameters).
@@ -294,7 +294,7 @@ namespace typeout { namespace _type { \
  * Variadic templates might be handled by registering them several times with
  * different number of parameters. You have to register as many variants as you
  * need later in your program. This may be easily performed with the macro
- * TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE(). 
+ * TYPEOUT_REG_TCLASS_WITH_TPARAMS_RANGE().
  *
  * <b>Example 1</b>
  * \snippet reg_tclass_with_tparams1.cpp Declaration and Registration
@@ -341,7 +341,7 @@ namespace typeout { namespace _type { \
    \endcode
  * where \c type represents type of non-type template parameter, which may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -352,12 +352,12 @@ namespace typeout { namespace _type { \
  * It is assumed that all the parameters have exactly same \c type. Such class
  * templates may be registered by providing just the class name, \c type
  * and the number of template parameters in use. This is basically what this
- * macro is provided for. 
+ * macro is provided for.
  *
  * Variadic templates might be handled by registering them several times with
  * different number of parameters. You have to register as many variants as you
  * need later in your program. This may be easily performed with the macro
- * TYPEOUT_REG_TCLASS_WITH_NPARAMS_RANGE(). 
+ * TYPEOUT_REG_TCLASS_WITH_NPARAMS_RANGE().
  *
  * <b>Example 1</b>
  * \snippet reg_tclass_with_nparams_as1.cpp Declaration and Registration
@@ -386,7 +386,7 @@ namespace typeout { namespace _type { \
   TYPEOUT_REG_TCLASS_AS(tpl,as, \
   BOOST_PP_REPEAT(n,TYPEOUT_ALWAYS_REPETITION,(const(type))))
 /** // doc: TYPEOUT_REG_TCLASS_WITH_NPARAMS {{{
- * \brief Register template class having only non-type parameters. 
+ * \brief Register template class having only non-type parameters.
  * \param tpl The original name of class template in the code.
  * \param type Type of template parameters, e.g. \c int.
  * \param n Number of template parameters used.
@@ -401,7 +401,7 @@ namespace typeout { namespace _type { \
    \endcode
  * where \c type represents type of non-type template parameter, which may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -412,12 +412,12 @@ namespace typeout { namespace _type { \
  * It is assumed that all the parameters have exactly same \c type. Such class
  * templates may be registered by providing just the class name, \c type
  * and the number of template parameters in use. This is basically what this
- * macro is provided for. 
+ * macro is provided for.
  *
  * Variadic templates might be handled by registering them several times with
  * different number of parameters. You have to register as many variants as you
  * need later in your program. This may be easily performed with the macro
- * TYPEOUT_REG_TCLASS_WITH_NPARAMS_RANGE(). 
+ * TYPEOUT_REG_TCLASS_WITH_NPARAMS_RANGE().
  *
  * <b>Example 1</b>
  * \snippet reg_tclass_with_nparams1.cpp Declaration and Registration
@@ -466,7 +466,7 @@ namespace typeout { namespace _type { \
  * First \c nt parameters are type-parameters. These parameters are followed by
  * \c nn non-type parameters of same \c type. The \c type may be (according to
  * N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -509,7 +509,7 @@ namespace typeout { namespace _type { \
   BOOST_PP_REPEAT(nn,TYPEOUT_ALWAYS_REPETITION,(const(type))))
 /** // doc: TYPEOUT_REG_TCLASS_WITH_TNPARAMS {{{
  * \brief Register template class having only type-parameters followed by
- *        non-type parameters. 
+ *        non-type parameters.
  * \param tpl The original name of class template.
  * \param type The type of non-type parameters.
  * \param nt Number of type-parameters used.
@@ -525,7 +525,7 @@ namespace typeout { namespace _type { \
  * First \c nt parameters are type-parameters. These parameters are followed by
  * \c nn non-type parameters of same \c type. The \c type may be (according to
  * N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -586,7 +586,7 @@ namespace typeout { namespace _type { \
  * First \c nn parameters are non-type parameters of same \c type. These
  * parameters are followed by \c nt type-parameters. The \c type may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -645,7 +645,7 @@ namespace typeout { namespace _type { \
  * First \c nn parameters are non-type parameters of same \c type. These
  * parameters are followed by \c nt type-parameters. The \c type may be
  * (according to N3485 draft of c++11 standard, 14.1.4, [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not
@@ -736,7 +736,7 @@ namespace typeout { namespace _type { \
    \endcode
  * The \c type may be (according to N3485 draft of c++11 standard, 14.1.4,
  * [temp.param]):
- * 
+ *
  * - integral or enumeration type,
  * - pointer to object or pointer to function (functions not supported yet),
  * - lvalue reference object or lvalue reference to function (functions not

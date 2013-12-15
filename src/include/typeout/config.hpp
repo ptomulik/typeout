@@ -1,16 +1,16 @@
 /*
  * @COPYRIGHT@
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
 
 // typeout/config.hpp
 
-/** // doc: typeout/config.hpp {{{ 
+/** // doc: typeout/config.hpp {{{
  * \file typeout/config.hpp
  * \todo Write documentation
  */ // }}}
@@ -363,7 +363,7 @@
  *
  * The directive is always defined as either \c 0 or \c 1. If not provided by
  * user, the value is guessed. If the currently used standard library does not
- * provide the \c &lt;condition_variable&gt; header, the constant is set to 
+ * provide the \c &lt;condition_variable&gt; header, the constant is set to
  * \c 1. Otherwise it is set to \c 0. You may prevent the \c typeout from
  * guessing by defining this macro prior to including \c typeout's header(s).
  *
@@ -383,7 +383,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_NO_STD_HDR_RATIO 
+# define TYPEOUT_NO_STD_HDR_RATIO
 /** // doc: TYPEOUT_SUPPORT_RVALUE_REFERENCES {{{
  * \brief Whether to support c++11 rvalue references.
  *
@@ -400,7 +400,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses rvalue references.
- * #define TYPEOUT_SUPPORT_RVALUE_REFERENCES 0 
+ * #define TYPEOUT_SUPPORT_RVALUE_REFERENCES 0
  * #include <typeout/typeout.hpp>
  * // NOTE: suport for rvalue references was disabled, so for example this
  * //   std::cout << typeout::_<char&&> << std::endl;
@@ -418,7 +418,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_RVALUE_REFERENCES 
+# define TYPEOUT_SUPPORT_RVALUE_REFERENCES
 /** // doc: TYPEOUT_SUPPORT_VARIADIC_TEMPLATES {{{
  * \brief Whether to support c++11 rvalue references.
  *
@@ -434,7 +434,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_VARIADIC_TEMPLATES 
+# define TYPEOUT_SUPPORT_VARIADIC_TEMPLATES
 /** // doc: TYPEOUT_SUPPORT_CHAR16_T {{{
  * \brief Whether to support c++11 \c char16_t.
  *
@@ -451,7 +451,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char16_t.
- * #define TYPEOUT_SUPPORT_CHAR16_T 0 
+ * #define TYPEOUT_SUPPORT_CHAR16_T 0
  * #include <typeout/typeout.hpp>
  * // NOTE: support for char16_t was disabled, so for example this code
  * //   std::cout << typeout::_<char16_t> << std::endl;
@@ -469,7 +469,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_CHAR16_T 
+# define TYPEOUT_SUPPORT_CHAR16_T
 /** // doc: TYPEOUT_SUPPORT_CHAR32_T {{{
  * \brief Whether to support c++11 \c std::array.
  *
@@ -486,7 +486,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_CHAR32_T 0 
+ * #define TYPEOUT_SUPPORT_CHAR32_T 0
  * #include <typeout/typeout.hpp>
  * // NOTE: support for char32_t was disabled, so for example this code
  * //   std::cout << typeout::_<char32_t> << std::endl;
@@ -504,7 +504,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_CHAR32_T 
+# define TYPEOUT_SUPPORT_CHAR32_T
 /** // doc: TYPEOUT_SUPPORT_STD_ARRAY {{{
  * \brief Whether to support c++11 \c .
  *
@@ -521,7 +521,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::array
- * #define TYPEOUT_SUPPORT_STD_ARRAY 0 
+ * #define TYPEOUT_SUPPORT_STD_ARRAY 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/array.hpp>
  * // NOTE: support for std:array was disabled, so for example this code
@@ -541,7 +541,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_ARRAY 
+# define TYPEOUT_SUPPORT_STD_ARRAY
 /** // doc: TYPEOUT_SUPPORT_STD_ATOMIC {{{
  * \brief Whether to support c++11 \c std::atomic.
  *
@@ -558,7 +558,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::atomic.
- * #define TYPEOUT_SUPPORT_STD_ATOMIC 0 
+ * #define TYPEOUT_SUPPORT_STD_ATOMIC 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/atomic.hpp>
  * // NOTE: support for std::atomic was disabled, so for example this code
@@ -578,7 +578,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_ATOMIC 
+# define TYPEOUT_SUPPORT_STD_ATOMIC
 /** // doc: TYPEOUT_SUPPORT_STD_BITSET {{{
  * \brief Whether to support c++11 \c std::deque.
  *
@@ -592,7 +592,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::deque.
- * #define TYPEOUT_SUPPORT_STD_BITSET 0 
+ * #define TYPEOUT_SUPPORT_STD_BITSET 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/deque.hpp>
  * // NOTE: support for std::deque was disabled, so for example this code
@@ -612,7 +612,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_BITSET 
+# define TYPEOUT_SUPPORT_STD_BITSET
 /** // doc: TYPEOUT_SUPPORT_STD_CHRONO {{{
  * \brief Whether to support types from c++x11 \c &lt;chrono&gt; header.
  *
@@ -629,7 +629,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses <chrono>.
- * #define TYPEOUT_SUPPORT_STD_CHRONO 0 
+ * #define TYPEOUT_SUPPORT_STD_CHRONO 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/chrono.hpp>
  * // NOTE: support for &lt;chrono&gt; was disabled, so for example this code
@@ -663,7 +663,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_STD_CLOCALE 0 
+ * #define TYPEOUT_SUPPORT_STD_CLOCALE 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/clocale.hpp>
  * // NOTE: support for <clocale> header was disabled, so for example
@@ -678,13 +678,13 @@
  * #include <typeout/type/std/clocale.hpp>
  * // ...
  * #if TYPEOUT_SUPPORT_STD_CLOCALE
- * // test case ... 
+ * // test case ...
  * #endif
  * \endcode
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_CLOCALE 
+# define TYPEOUT_SUPPORT_STD_CLOCALE
 /** // doc: TYPEOUT_SUPPORT_STD_CMATH {{{
  * \brief Whether to support things from &lt;cmath&gt; header.
  *
@@ -698,7 +698,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_STD_CMATH 0 
+ * #define TYPEOUT_SUPPORT_STD_CMATH 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/cmath.hpp>
  * // NOTE: support for <cmath> header was disabled, so for example
@@ -713,13 +713,13 @@
  * #include <typeout/type/std/cmath.hpp>
  * // ...
  * #if TYPEOUT_SUPPORT_STD_CMATH
- * // test case ... 
+ * // test case ...
  * #endif
  * \endcode
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_CMATH 
+# define TYPEOUT_SUPPORT_STD_CMATH
 /** // doc: TYPEOUT_SUPPORT_STD_COMPLEX {{{
  * \brief Whether to support things from &lt;complex&gt; header.
  *
@@ -733,7 +733,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_STD_COMPLEX 0 
+ * #define TYPEOUT_SUPPORT_STD_COMPLEX 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/complex.hpp>
  * // NOTE: support for <complex> header was disabled, so for example
@@ -748,13 +748,13 @@
  * #include <typeout/type/std/complex.hpp>
  * // ...
  * #if TYPEOUT_SUPPORT_STD_COMPLEX
- * // test case ... 
+ * // test case ...
  * #endif
  * \endcode
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_COMPLEX 
+# define TYPEOUT_SUPPORT_STD_COMPLEX
 /** // doc: TYPEOUT_SUPPORT_STD_CONDITION_VARIABLE {{{
  * \brief Whether to support typed from c++x11 &lt;condition_variable&gt; header.
  *
@@ -771,7 +771,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses &lt;condition_variable&gt;.
- * #define TYPEOUT_SUPPORT_STD_CONDITION_VARIABLE 0 
+ * #define TYPEOUT_SUPPORT_STD_CONDITION_VARIABLE 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/condition_variable.hpp>
  * // NOTE: support for <condition_variable>; was disabled, so for example
@@ -806,7 +806,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_STD_CTIME 0 
+ * #define TYPEOUT_SUPPORT_STD_CTIME 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/ctime.hpp>
  * // NOTE: support for <ctime> header was disabled, so for example
@@ -821,13 +821,13 @@
  * #include <typeout/type/std/ctime.hpp>
  * // ...
  * #if TYPEOUT_SUPPORT_STD_CTIME
- * // test case ... 
+ * // test case ...
  * #endif
  * \endcode
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_CTIME 
+# define TYPEOUT_SUPPORT_STD_CTIME
 /** // doc: TYPEOUT_SUPPORT_STD_CWCHAR {{{
  * \brief Whether to support types from c++x11 \c &lt;cwchar&gt; header.
  *
@@ -844,7 +844,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses <cwchar>.
- * #define TYPEOUT_SUPPORT_STD_CWCHAR 0 
+ * #define TYPEOUT_SUPPORT_STD_CWCHAR 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/cwchar.hpp>
  * // NOTE: support for &lt;cwchar&gt; was disabled, so for example this code
@@ -878,7 +878,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::deque.
- * #define TYPEOUT_SUPPORT_STD_DEQUE 0 
+ * #define TYPEOUT_SUPPORT_STD_DEQUE 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/deque.hpp>
  * // NOTE: support for std::deque was disabled, so for example this code
@@ -898,7 +898,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_DEQUE 
+# define TYPEOUT_SUPPORT_STD_DEQUE
 /** // doc: TYPEOUT_SUPPORT_STD_MEMORY {{{
  * \brief Whether to support things from &lt;memory&gt; header.
  *
@@ -912,7 +912,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses char32_t.
- * #define TYPEOUT_SUPPORT_STD_MEMORY 0 
+ * #define TYPEOUT_SUPPORT_STD_MEMORY 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/memory.hpp>
  * // NOTE: support for <memory> header was disabled, so for example
@@ -927,13 +927,13 @@
  * #include <typeout/type/std/memory.hpp>
  * // ...
  * #if TYPEOUT_SUPPORT_STD_MEMORY
- * // test case ... 
+ * // test case ...
  * #endif
  * \endcode
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_MEMORY 
+# define TYPEOUT_SUPPORT_STD_MEMORY
 /** // doc: TYPEOUT_SUPPORT_STD_SMART_PTR {{{
  * \brief Whether to support c++11 \c std::shared_ptr and \c std::unique_ptr.
  *
@@ -947,7 +947,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::shared_ptr and std::unique_ptr.
- * #define TYPEOUT_SUPPORT_STD_SMART_PTR 0 
+ * #define TYPEOUT_SUPPORT_STD_SMART_PTR 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/memory.hpp>
  * // NOTE: support for std::shared_ptr was disabled, so for example this code
@@ -967,7 +967,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_SMART_PTR 
+# define TYPEOUT_SUPPORT_STD_SMART_PTR
 /** // doc: TYPEOUT_SUPPORT_CXX11_ALLOCATOR {{{
  * \brief Whether to support c++11 version of allocator.
  *
@@ -983,10 +983,10 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::shared_ptr and std::unique_ptr.
- * #define TYPEOUT_SUPPORT_CXX11_ALLOCATOR 0 
+ * #define TYPEOUT_SUPPORT_CXX11_ALLOCATOR 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/memory.hpp>
- * // NOTE: support for std::allocator_traits was disabled, so for example 
+ * // NOTE: support for std::allocator_traits was disabled, so for example
  * // this code
  * //   std::cout << typeout::_<std::allocator_traits<std::allocator<int> > > << std::endl;
  * // will not compile here.
@@ -1004,7 +1004,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_CXX11_ALLOCATOR 
+# define TYPEOUT_SUPPORT_CXX11_ALLOCATOR
 /** // doc: TYPEOUT_SUPPORT_STD_RATIO {{{
  * \brief Whether to support c++11 \c std::ratio.
  *
@@ -1021,7 +1021,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::ratio.
- * #define TYPEOUT_SUPPORT_STD_RATIO 0 
+ * #define TYPEOUT_SUPPORT_STD_RATIO 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/ratio.hpp>
  * // NOTE: support for std::ratio was disabled, so for example this code
@@ -1041,7 +1041,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_RATIO 
+# define TYPEOUT_SUPPORT_STD_RATIO
 /** // doc: TYPEOUT_SUPPORT_STD_TUPLE {{{
  * \brief Whether to support c++11 \c std::tuple.
  *
@@ -1058,7 +1058,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses std::tuple.
- * #define TYPEOUT_SUPPORT_STD_TUPLE 0 
+ * #define TYPEOUT_SUPPORT_STD_TUPLE 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/std/tuple.hpp>
  * // NOTE: support for std::tuple was disabled, so for example this code
@@ -1078,7 +1078,7 @@
  *
  * \hideinitializer
  */ // }}}
-# define TYPEOUT_SUPPORT_STD_TUPLE 
+# define TYPEOUT_SUPPORT_STD_TUPLE
 
 //
 // boost::
@@ -1099,7 +1099,7 @@
  * <b>Example 1</b>:
  * \code
  * // Disable library code that uses boost::tuple.
- * #define TYPEOUT_SUPPORT_BOOST_TUPLE 0 
+ * #define TYPEOUT_SUPPORT_BOOST_TUPLE 0
  * #include <typeout/typeout.hpp>
  * #include <typeout/type/boost/tuple.hpp>
  * // NOTE: support for boost::tuple was disabled, so for example this code
