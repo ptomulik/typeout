@@ -27,8 +27,8 @@
 // [Program]
 #include <typeout/reg_tclass.hpp>
 #include <typeout/type/fundamental.hpp>
-#include <typeout/tvalue/fundamental.hpp>
-#include <typeout/tvalue/partial_specs_ref.hpp>
+#include <typeout/value/fundamental.hpp>
+#include <typeout/value/partial_specs_ref.hpp>
 #include <typeout/stream/ostream.hpp>
 #include <iostream>
 

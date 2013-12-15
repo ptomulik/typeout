@@ -30,38 +30,32 @@
 #include <typeout/type/partial_specs_ref.hpp>
 #include <typeout/type/partial_specs_cv.hpp>
 #include <typeout/reg_type.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
-
-#include <sstream>
 
 // We don't include "type/fundamentals.hpp", so we must register locally
 // the types we use.
 TYPEOUT_REG_TYPE(char)
 
-BOOST_AUTO_TEST_SUITE(test_type_partial_specs_unit)
-
-template <typename T>
-std::string rtstr_of()
-{
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
 BOOST_AUTO_TEST_CASE(ref)
 {
-  BOOST_CHECK_EQUAL(rtstr_of<char&>(),"char&");
-  BOOST_CHECK_EQUAL(rtstr_of<char const&>(),"char const&");
-  BOOST_CHECK_EQUAL(rtstr_of<char volatile&>(),"char volatile&");
-  BOOST_CHECK_EQUAL(rtstr_of<char const volatile&>(),"char const volatile&");
+  using _string::_;
+  BOOST_CHECK_EQUAL(_<char&>(),"char&");
+  BOOST_CHECK_EQUAL(_<char const&>(),"char const&");
+  BOOST_CHECK_EQUAL(_<char volatile&>(),"char volatile&");
+  BOOST_CHECK_EQUAL(_<char const volatile&>(),"char const volatile&");
 #if TYPEOUT_SUPPORT_RVALUE_REFERENCES
-  BOOST_CHECK_EQUAL(rtstr_of<char&&>(),"char&&");
-  BOOST_CHECK_EQUAL(rtstr_of<char const&&>(),"char const&&");
-  BOOST_CHECK_EQUAL(rtstr_of<char volatile&&>(),"char volatile&&");
-  BOOST_CHECK_EQUAL(rtstr_of<char const volatile&&>(),"char const volatile&&");
+  BOOST_CHECK_EQUAL(_<char&&>(),"char&&");
+  BOOST_CHECK_EQUAL(_<char const&&>(),"char const&&");
+  BOOST_CHECK_EQUAL(_<char volatile&&>(),"char volatile&&");
+  BOOST_CHECK_EQUAL(_<char const volatile&&>(),"char const volatile&&");
 #endif
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_PARTIAL_SPECS_REF_ENABLED */

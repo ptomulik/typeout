@@ -20,45 +20,58 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-/** // doc: typeout/tvalue/test_fptr.cpp {{{
- * \file typeout/tvalue/test_fptr.cpp
+/** // doc: typeout/value/test_fptr.cpp {{{
+ * \file typeout/value/test_fptr.cpp
  * \todo Write documentation
  */ // }}}
 #include <typeout/test_config.hpp>
 #if TYPEOUT_TEST_TYPE_FPTR_ENABLED
 
-#include <typeout/tvalue/class.hpp>
+#include <typeout/value/fptr.hpp>
 #include <typeout/type/fundamental.hpp>
-#include <typeout/type/fptr.hpp>
-//#include <typeout/tvalue/partial_specs.hpp>
+#include <typeout/type/partial_specs.hpp>
+#include <typeout/value/partial_specs.hpp>
+#include <typeout/stream/string.hpp>
 
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+namespace foo { namespace bar {
+  void fun1() {}
+  char fun2(int*) { return '\x0';}
+  template <typename T> void fun3(T) { }
+  void fun4() {}
+}}
 
-BOOST_AUTO_TEST_SUITE(test_tvalue_fptr_unit)
 
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_value)
+BOOST_AUTO_TEST_SUITE(fptr)
+
+BOOST_AUTO_TEST_CASE(unregistered)
 {
-  std::stringstream ss;
-  typeout::_tvalue::_<T>::write(ss,(T)0);
-  return ss.str();
+  using _string::_;
+  BOOST_CHECK_EQUAL(_<void(*)()>((void(*)())0x123),"(void(*)())0x123");
+  BOOST_CHECK_EQUAL((_<void(*)(void)>(0)),"(void(*)())0");
+  BOOST_CHECK_EQUAL((_<void(*)(int)>(0)),"(void(*)(int))0");
+  BOOST_CHECK_EQUAL((_<void(*)(int,char)>(0)),"(void(*)(int, char))0");
+  BOOST_CHECK_EQUAL((_<void(*)(int&,char*)>(0)),"(void(*)(int&, char*))0");
+  BOOST_CHECK_EQUAL((_<int(*)()>(0)), "(int(*)())0");
+  BOOST_CHECK_EQUAL((_<char&(*)(int const&)>(0)), "(char&(*)(int const&))0");
 }
 
-BOOST_AUTO_TEST_CASE(type_names)
+BOOST_AUTO_TEST_CASE(registered)
 {
-  BOOST_CHECK_EQUAL((_s<void(*)()>()),"(void(*)())0");
-  /*
-  BOOST_CHECK_EQUAL((_s<void(*)(void)>()),"(void(*)())0");
-  BOOST_CHECK_EQUAL((_s<void(*)(int)>()),"(void(*)(int))0");
-  BOOST_CHECK_EQUAL((_s<void(*)(int,char)>()),"void(*)(int, char)0");
-  BOOST_CHECK_EQUAL((_s<void(*)(int&,char*)>()),"void(*)(int&, char*)0");
-  BOOST_CHECK_EQUAL((_s<int(*)()>()), "int(*)()0");
-  BOOST_CHECK_EQUAL((_s<char&(*)(int const&)>()), "char&(*)(int const&)0");
-  */
+  using _string::_;
+  TYPEOUT_REG_FPTR(&foo::bar::fun1);
+  TYPEOUT_REG_FPTR(&foo::bar::fun2);
+  TYPEOUT_REG_FPTR(&foo::bar::fun3<int>);
+  BOOST_CHECK_EQUAL(_(&foo::bar::fun1), "&foo::bar::fun1");
+  BOOST_CHECK_EQUAL(_(&foo::bar::fun2), "&foo::bar::fun2");
+  BOOST_CHECK_EQUAL(_(&foo::bar::fun3<int>), "&foo::bar::fun3<int>");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_FPTR_ENABLED */

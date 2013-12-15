@@ -29,7 +29,7 @@
 #ifndef TYPEOUT_TYPE_HPP_INCLUDED
 #define TYPEOUT_TYPE_HPP_INCLUDED
 
-#include <typeout/type/class.hpp>
+#include <typeout/type/info.hpp>
 #include <typeout/type/fptr.hpp>
 #include <typeout/type/partial_specs.hpp>
 #include <typeout/reg_type.hpp>

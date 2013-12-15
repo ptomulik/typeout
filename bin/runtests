@@ -21,4 +21,4 @@
 # SOFTWARE
 
 # bin/runtests: runner for build/test/runtest
-( cd `dirname $0`/.. &&  (test -x build/test/runtests || scons -Q check) && build/test/runtests $@ )
+( cd `dirname $0`/.. &&  scons -Q 'unit-test' && build/test/runtests $@ )

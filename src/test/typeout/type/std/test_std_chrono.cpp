@@ -29,37 +29,31 @@
 
 #include <typeout/type/std/chrono.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_chrono_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_chrono)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::chrono::system_clock >()), "std::chrono::system_clock");
-  BOOST_CHECK_EQUAL((_s<std::chrono::steady_clock >()), "std::chrono::steady_clock");
-//  BOOST_CHECK_EQUAL((_s<std::chrono::high_resolution_clock >()),"std::chrono::high_resolution_clock");
-  BOOST_CHECK_EQUAL((_s<std::chrono::treat_as_floating_point < int > >()), 
+  BOOST_CHECK_EQUAL((_<std::chrono::system_clock >()), "std::chrono::system_clock");
+  BOOST_CHECK_EQUAL((_<std::chrono::steady_clock >()), "std::chrono::steady_clock");
+//  BOOST_CHECK_EQUAL((_<std::chrono::high_resolution_clock >()),"std::chrono::high_resolution_clock");
+  BOOST_CHECK_EQUAL((_<std::chrono::treat_as_floating_point < int > >()), 
                        "std::chrono::treat_as_floating_point < int >");
-  BOOST_CHECK_EQUAL((_s<std::chrono::duration_values < int > >()), 
+  BOOST_CHECK_EQUAL((_<std::chrono::duration_values < int > >()), 
                        "std::chrono::duration_values < int >");
-  BOOST_CHECK_EQUAL((_s<std::chrono::duration<unsigned int, std::nano> >()), "std::chrono::duration < unsigned int, std::nano >");
-  BOOST_CHECK_EQUAL((_s<std::chrono::time_point < std::chrono::system_clock, std::chrono::duration < unsigned int, std::nano > > >()),
+  BOOST_CHECK_EQUAL((_<std::chrono::duration<unsigned int, std::nano> >()), "std::chrono::duration < unsigned int, std::nano >");
+  BOOST_CHECK_EQUAL((_<std::chrono::time_point < std::chrono::system_clock, std::chrono::duration < unsigned int, std::nano > > >()),
                        "std::chrono::time_point < std::chrono::system_clock, std::chrono::duration < unsigned int, std::nano > >");
-  BOOST_CHECK_EQUAL((_s<std::chrono::time_point < std::chrono::steady_clock, std::chrono::duration < unsigned int, std::nano > > >()),
+  BOOST_CHECK_EQUAL((_<std::chrono::time_point < std::chrono::steady_clock, std::chrono::duration < unsigned int, std::nano > > >()),
                        "std::chrono::time_point < std::chrono::steady_clock, std::chrono::duration < unsigned int, std::nano > >");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_CHRONO_ENABLED */

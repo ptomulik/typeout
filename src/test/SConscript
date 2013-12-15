@@ -25,8 +25,16 @@ import SCons.Util
 #############################################################################
 # C++ programs that should be build (and run)
 test_cpp_files = [
-  'typeout/test_tpack.cpp',
 
+#########################################################
+# misc
+#######
+  'typeout/stream/test_ostream.cpp',
+
+#########################################################
+# type
+#######
+# basic
   'typeout/type/test_fundamental.cpp',
   'typeout/type/test_fptr.cpp',
   'typeout/type/test_partial_specs_cv.cpp',
@@ -45,7 +53,6 @@ test_cpp_files = [
   'typeout/type/test_partial_specs_ext2_ptr_cv.cpp',
   'typeout/type/test_partial_specs_ext2_cv_ptr_cv.cpp',
 
-  'typeout/tvalue/test_fptr.cpp',
 # std::
   'typeout/type/std/test_std_array.cpp',
   'typeout/type/std/test_std_atomic.cpp',
@@ -63,6 +70,11 @@ test_cpp_files = [
   'typeout/type/std/test_std_tuple.cpp',
 # boost::
   'typeout/type/boost/test_boost_tuple.cpp',
+
+#########################################################
+# value
+######
+  'typeout/value/test_fptr.cpp',
 ]
 
 #############################################################################
@@ -82,7 +94,7 @@ test_o_files += env.Object( ['runtests.cpp'], **cxx_overrides )
 
 runtest_program = env.Program(['runtests'], test_o_files, **ld_overrides)
 
-env.Alias( 'check', runtest_program )
+env.Alias( 'unit-test', runtest_program )
 
 
 ################################# SUBDIRECTORIES #############################

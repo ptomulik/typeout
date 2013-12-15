@@ -29,23 +29,21 @@
 #ifndef TYPEOUT_TYPE_FPTR_HPP_INCLUDED
 #define TYPEOUT_TYPE_FPTR_HPP_INCLUDED
 
-#include <typeout/type/class.hpp>
-#include <typeout/tpack.hpp>
+#include <typeout/type/info.hpp>
+#include <typeout/type/pack.hpp>
 
 namespace typeout {
 namespace _type {
 
+/** // doc: info<T(*)(Args...)> {{{
+ * \todo Write documentation
+ */ // }}}
 template <class T, class... Args>
-struct _ <T(*)(Args...)>
+struct info <T(*)(Args...)>
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  {
-    _<T>::write(os);
-    os << "(*)(";
-      _tpack::_<Args...>::write(os);
-    os << ")";
-  }
+  static Ostream& write(Ostream& os)
+  { pack<Args...>::write( info<T>::write(os) << "(*)(" ) << ")"; return os; }
 };
 
 }

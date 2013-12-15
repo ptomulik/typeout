@@ -20,35 +20,32 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/class.hpp
+// typeout/type/info.hpp
 
-/** // doc: typeout/tvalue/class.hpp {{{ 
- * \file typeout/tvalue/class.hpp
+/** // doc: typeout/type/info.hpp {{{ 
+ * \file typeout/type/info.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TVALUE_CLASS_HPP_INCLUDED
-#define TYPEOUT_TVALUE_CLASS_HPP_INCLUDED
+#ifndef TYPEOUT_TYPE_INFO_HPP_INCLUDED
+#define TYPEOUT_TYPE_INFO_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/type/class.hpp>
+#include <typeout/errors.hpp>
 
 namespace typeout {
-namespace _tvalue {
+namespace _type {
 
+/** // doc: info {{{
+ * \todo Write documentation
+ */ // }}}
 template <typename T>
-struct _
+struct info
+  : public error_type_not_registered<T>
 {
-  template <class Ostream>
-  static void write (Ostream& os, T t)
-  { 
-    os << "("; _type::_<T>::write(os); os << ")";
-    os << t;
-  }
 };
 
-} /* namespace _tvalue */
+} /* namespace _type */
 } /* namespace typeout */
 
-#endif /* TYPEOUT_TVALUE_CLASS_HPP_INCLUDED */
+#endif /* TYPEOUT_TYPE_INFO_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

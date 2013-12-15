@@ -31,8 +31,8 @@
 
 #include <typeout/type.hpp>
 #include <typeout/type/fundamental.hpp>
-#include <typeout/tvalue.hpp>
-#include <typeout/tvalue/fundamental.hpp>
+#include <typeout/value.hpp>
+#include <typeout/value/fundamental.hpp>
 #include <typeout/stream.hpp>
 
 #endif /* TYPEOUT_TYPEOUT_HPP_INCLUDED */

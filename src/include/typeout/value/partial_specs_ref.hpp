@@ -20,19 +20,31 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue.hpp
+// typeout/value/partial_specs_ref.hpp
 
-/** // doc: typeout/tvalue.hpp {{{ 
- * \file typeout/tvalue.hpp
+/** // doc: typeout/value/partial_specs_ref.hpp {{{ 
+ * \file typeout/value/partial_specs_ref.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TVALUE_HPP_INCLUDED
-#define TYPEOUT_TVALUE_HPP_INCLUDED
+#ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
+#define TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED
 
-#include <typeout/tvalue/class.hpp>
-#include <typeout/tvalue/partial_specs.hpp>
+#include <typeout/value/info.hpp>
 
+namespace typeout {
+namespace _value {
+/*
+template <typename T, T& t>
+struct info<T&,t>
+{
+  template <class Ostream>
+  static void write(Ostream& os)
+  { os << "(" << typeout::info<T&> << ")" << t; }
+};
+*/
+} /* namesapce _value */
+} /* namespace typeout */
 
-#endif /* TYPEOUT_TVALUE_HPP_INCLUDED */
+#endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_REF_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

@@ -29,27 +29,21 @@
 
 #include <typeout/type/std/complex.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_complex_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_complex)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::complex < float > >()),"std::complex < float >");
-  BOOST_CHECK_EQUAL((_s<std::complex < double > >()),"std::complex < double >");
+  BOOST_CHECK_EQUAL((_<std::complex < float > >()),"std::complex < float >");
+  BOOST_CHECK_EQUAL((_<std::complex < double > >()),"std::complex < double >");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_COMPLEX_ENABLED */

@@ -43,32 +43,32 @@ template <typename E, std::size_t N>
 struct _extents_helper
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { os << "[" << N << "]";  E::write(os);}
+  static Ostream& write(Ostream& os)
+  { E::write(os << "[" << N << "]"); return os; }
 };
 
 template <typename E>
 struct _extents_helper<E,0>
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { os << "[]";  E::write(os);}
+  static Ostream& write(Ostream& os)
+  { E::write(os << "[]"); return os; }
 };
 
 template <std::size_t N>
 struct _extents_helper<void,N>
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { os << "[" << N << "]"; }
+  static Ostream& write(Ostream& os)
+  { os << "[" << N << "]"; return os; }
 };
 
 template <>
 struct _extents_helper<void,0>
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { os << "[]"; }
+  static Ostream& write(Ostream& os)
+  { os << "[]"; return os; }
 };
 
 template <typename T, std::size_t N>
@@ -87,83 +87,83 @@ struct _array_helper<T[N],M>
 };
 
 template <typename T>
-struct _ <T[]>
+struct info <T[]>
 {
   typedef typename _array_helper<T,0>::type_noext type_noext;
   typedef typename _array_helper<T,0>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T>
-struct _ <T const []>
+struct info <T const []>
 {
   typedef typename _array_helper<T,0>::type_noext const type_noext;
   typedef typename _array_helper<T,0>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T>
-struct _ <T volatile []>
+struct info <T volatile []>
 {
   typedef typename _array_helper<T,0>::type_noext volatile type_noext;
   typedef typename _array_helper<T,0>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T>
-struct _ <T const volatile []>
+struct info <T const volatile []>
 {
   typedef typename _array_helper<T,0>::type_noext const volatile type_noext;
   typedef typename _array_helper<T,0>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T, std::size_t N>
-struct _ <T[N]>
+struct info <T[N]>
 {
   typedef typename _array_helper<T,N>::type_noext type_noext;
   typedef typename _array_helper<T,N>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T, std::size_t N>
-struct _ <T const[N]>
+struct info <T const[N]>
 {
   typedef typename _array_helper<T,N>::type_noext const type_noext;
   typedef typename _array_helper<T,N>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T, std::size_t N>
-struct _ <T volatile[N]>
+struct info <T volatile[N]>
 {
   typedef typename _array_helper<T,N>::type_noext volatile type_noext;
   typedef typename _array_helper<T,N>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 template <typename T, std::size_t N>
-struct _ <T const volatile[N]>
+struct info <T const volatile[N]>
 {
   typedef typename _array_helper<T,N>::type_noext const volatile type_noext;
   typedef typename _array_helper<T,N>::extents extents;
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<type_noext>::write(os); extents::write(os); }
+  static Ostream& write(Ostream& os)
+  { extents::write(info<type_noext>::write(os)); return os; }
 };
 
 

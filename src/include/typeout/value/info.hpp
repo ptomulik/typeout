@@ -20,48 +20,29 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-/** // doc: typeout/test_streamout.cpp {{{
- * \file typeout/test_streamout.cpp
+// typeout/value/info.hpp
+
+/** // doc: typeout/value/info.hpp {{{ 
+ * \file typeout/value/info.hpp
  * \todo Write documentation
  */ // }}}
-#include <typeout/test_config.hpp>
-#if TYPEOUT_TEST_TPACK_ENABLED
+#ifndef TYPEOUT_TVALUE_CLASS_HPP_INCLUDED
+#define TYPEOUT_TVALUE_CLASS_HPP_INCLUDED
 
-#include <typeout/tpack.hpp>
-#include <typeout/reg_type.hpp>
-#include <boost/test/unit_test.hpp>
+namespace typeout {
+namespace _value {
 
-TYPEOUT_REG_TYPE(char)
-TYPEOUT_REG_TYPE(int)
-
-BOOST_AUTO_TEST_SUITE(test_tpack_unit)
-
-template <class...Args>
-std::string _s()
+template <typename T>
+struct info
 {
-  std::stringstream ss;
-  typeout::_tpack::_<Args...>::write(ss);
-  return ss.str();
-}
+  template <class Ostream>
+  static Ostream& write (Ostream& os, T t)
+  { os << t; return os; }
+};
 
-BOOST_AUTO_TEST_CASE(zero_args)
-{
-  BOOST_CHECK_EQUAL(_s<>(), "");
-}
-BOOST_AUTO_TEST_CASE(one_arg)
-{
-  BOOST_CHECK_EQUAL(_s<char>(), "char");
-  BOOST_CHECK_EQUAL(_s<int>(), "int");
-}
-BOOST_AUTO_TEST_CASE(multiple_args)
-{
-  BOOST_CHECK_EQUAL((_s<char,int>()), "char, int");
-  BOOST_CHECK_EQUAL((_s<int,char>()), "int, char");
-  BOOST_CHECK_EQUAL((_s<int,char,char>()), "int, char, char");
-}
-BOOST_AUTO_TEST_SUITE_END()
+} /* namespace _value */
+} /* namespace typeout */
 
-
-#endif /* TYPEOUT_TEST_STREAMOUT_ENABLED */
+#endif /* TYPEOUT_TVALUE_CLASS_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

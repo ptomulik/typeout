@@ -20,129 +20,129 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/fundamental.hpp
+// typeout/value/fundamental.hpp
 
-/** // doc: typeout/tvalue/fundamental.hpp {{{ 
- * \file typeout/tvalue/fundamental.hpp
+/** // doc: typeout/value/fundamental.hpp {{{ 
+ * \file typeout/value/fundamental.hpp
  * \todo Write documentation
  */ // }}}
 #ifndef TYPEOUT_TVALUE_FUNDAMENTAL_HPP_INCLUDED
 #define TYPEOUT_TVALUE_FUNDAMENTAL_HPP_INCLUDED
 
 #include <typeout/config.hpp>
-#include <typeout/tvalue/class.hpp>
+#include <typeout/value/info.hpp>
 
 namespace typeout {
-namespace _tvalue {
+namespace _value {
 
 template <>
-struct _<bool>
+struct info<bool>
 {
   template <class Ostream>
-  static void write(Ostream& os, bool x)
-  { os << x ? "true" : "false"; }
+  static Ostream& write(Ostream& os, bool x)
+  { os << x ? "true" : "false"; return os; }
 };
 
 template <>
-struct _<char>
+struct info<char>
 {
   template <class Ostream>
-  static void write(Ostream& os, char t)
-  { os << "\'" << t << "\'"; }
+  static Ostream& write(Ostream& os, char t)
+  { os << "\'" << t << "\'"; return os; }
 };
 
 #if TYPEOUT_SUPPORT_CHAR16_T
 template <>
-struct _<char16_t>
+struct info<char16_t>
 {
   template <class Ostream>
-  static void write(Ostream& os,char16_t t)
-  { os << "(char16_t)\'" << t << "\'"; }
+  static Ostream& write(Ostream& os,char16_t t)
+  { os << "(char16_t)\'" << t << "\'"; return os; }
 };
 #endif
 
 #if TYPEOUT_SUPPORT_CHAR32_T
 template <>
-struct _<char32_t>
+struct info<char32_t>
 {
   template <class Ostream>
-  static void write(Ostream& os, char32_t t)
-  { os << "(char32_t)\'" << t << "\'"; }
+  static Ostream& write(Ostream& os, char32_t t)
+  { os << "(char32_t)\'" << t << "\'"; return os; }
 };
 #endif
 
 template <>
-struct _<wchar_t>
+struct info<wchar_t>
 {
   template <class Ostream>
-  static void write(Ostream& os, wchar_t t)
-  { os << "L\'" << t << "\'"; }
+  static Ostream& write(Ostream& os, wchar_t t)
+  { os << "L\'" << t << "\'"; return os; }
 };
 
 template <>
-struct _<signed char>
+struct info<signed char>
 {
   template <class Ostream>
-  static void write(Ostream& os, signed char t)
-  { os << "\'" << t << "\'"; }
+  static Ostream& write(Ostream& os, signed char t)
+  { os << "\'" << t << "\'"; return os; }
 };
 
 template <>
-struct _<short int>
+struct info<short int>
 {
   template <class Ostream>
-  static void write(Ostream& os, short int t)
-  { os << "(short int)" << t; }
+  static Ostream& write(Ostream& os, short int t)
+  { os << "(short int)" << t; return os; }
 };
 
 template <>
-struct _<int>
+struct info<int>
 {
   template <class Ostream>
-  static void write(Ostream& os, int t)
-  { os <<  t; }
+  static Ostream& write(Ostream& os, int t)
+  { os <<  t; return os; }
 };
 
 template <>
-struct _<long int>
+struct info<long int>
 {
   template <class Ostream>
-  static void write(Ostream& os, long int t)
-  { os << t << "l"; }
+  static Ostream& write(Ostream& os, long int t)
+  { os << t << "l"; return os; }
 };
 
 template <>
-struct _<long long int>
+struct info<long long int>
 {
   template <class Ostream>
-  static void write(Ostream& os, long long int t)
-  { os << t << "ll"; }
+  static Ostream& write(Ostream& os, long long int t)
+  { os << t << "ll"; return os; }
 };
 
 template <>
-struct _<unsigned char>
+struct info<unsigned char>
 {
   template <class Ostream>
-  static void write(Ostream& os, unsigned char t)
-  { os << "(unsigned char)\'" << t << "\'"; }
+  static Ostream& write(Ostream& os, unsigned char t)
+  { os << "(unsigned char)\'" << t << "\'"; return os; }
 };
 
 template <>
-struct _<unsigned int>
+struct info<unsigned int>
 {
   template <class Ostream>
-  static void write(Ostream& os, unsigned int t)
-  { os << t << "u"; }
+  static Ostream& write(Ostream& os, unsigned int t)
+  { os << t << "u"; return os; }
 };
 
 template <>
-struct _<unsigned long int>
+struct info<unsigned long int>
 {
   template <class Ostream>
-  static void write(Ostream& os, unsigned long int t)
-  { os << t << "ul"; }
+  static Ostream& write(Ostream& os, unsigned long int t)
+  { os << t << "ul"; return os; }
 };
-} /* namespace _tvalue */
+} /* namespace _value */
 } /* namespace typeout */
 
 #endif /* TYPEOUT_TVALUE_FUNDAMENTAL_HPP_INCLUDED */

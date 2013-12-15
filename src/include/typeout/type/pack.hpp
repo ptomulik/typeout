@@ -20,46 +20,59 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tpack.hpp
+// typeout/type/pack.hpp
 
-/** // doc: typeout/tpack.hpp {{{ 
- * \file typeout/tpack.hpp
+/** // doc: typeout/type/pack.hpp {{{ 
+ * \file typeout/type/pack.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TPACK_HPP_INCLUDED
-#define TYPEOUT_TPACK_HPP_INCLUDED
+#ifndef TYPEOUT_TYPE_PACK_HPP_INCLUDED
+#define TYPEOUT_TYPE_PACK_HPP_INCLUDED
 
-#include <typeout/type/class.hpp>
+#include <typeout/type/info.hpp>
 
 namespace typeout {
-namespace _tpack {
+namespace _type {
 
-template <class...> struct _;
+/** // doc: struct pack<Types...> {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename...Types> struct pack;
 
-template <class T, class...Tail>
-struct _<T,Tail...>
+/** // doc: struct pack<T,Types...> {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename T, typename...Tail> 
+struct pack<T,Tail...>
 {
-  template<typename Ostream>
-  static void write(Ostream& os)
-  { _<T>::write(os); os << ", "; _<Tail...>::write(os); }
+  template<class Ostream>
+  static Ostream& write(Ostream& os)
+  { pack<Tail...>::write(info<T>::write(os) << ", "); return os; }
 };
-template <class T>
-struct _<T>
+
+/** // doc: struct pack<T> {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename T>
+struct pack<T>
+  : public info<T>
 {
-  template<typename Ostream>
-  static void write(Ostream& os)
-  { _type::_<T>::write(os); }
 };
+
+/** // doc: struct pack> {{{
+ * \todo Write documentation
+ */ // }}}
 template <>
-struct _<>
+struct pack<>
 {
   template<typename Ostream>
-  static void write(Ostream&) { }
+  static Ostream& write(Ostream& os)
+  { return os; }
 };
 
-} /* namespace _tpack */
+} /* namespace _type */
 } /* namespace typeout */
 
-#endif /* TYPEOUT_TPACK_HPP_INCLUDED */
+#endif /* TYPEOUT_TYPE_PACK_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

@@ -28,55 +28,50 @@
 #if TYPEOUT_TEST_TYPE_FUNDAMENTAL_ENABLED
 
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
-
-BOOST_AUTO_TEST_SUITE(test_type_fundamental_unit)
-
-template <typename T>
-std::string _s()
-{
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
 // Check if the registration of fundamental types produced correct
 // meta-classes.
-BOOST_AUTO_TEST_CASE(type_names)
+BOOST_AUTO_TEST_CASE(fundamental)
 {
+  using _string::_;
+
   /* void */
-  BOOST_CHECK_EQUAL(_s<void>(),"void");
+  BOOST_CHECK_EQUAL(_<void>(),"void");
 
   /* Integral types */
-  BOOST_CHECK_EQUAL(_s<bool>(),"bool");
-  BOOST_CHECK_EQUAL(_s<char>(),"char");
+  BOOST_CHECK_EQUAL(_<bool>(),"bool");
+  BOOST_CHECK_EQUAL(_<char>(),"char");
 
 #if TYPEOUT_SUPPORT_CHAR16_T
-  BOOST_CHECK_EQUAL(_s<char16_t>(),"char16_t");
+  BOOST_CHECK_EQUAL(_<char16_t>(),"char16_t");
 #endif
 #if TYPEOUT_SUPPORT_CHAR32_T
-  BOOST_CHECK_EQUAL(_s<char32_t>(),"char32_t");
+  BOOST_CHECK_EQUAL(_<char32_t>(),"char32_t");
 #endif
 
-  BOOST_CHECK_EQUAL(_s<wchar_t>(),"wchar_t");
-  BOOST_CHECK_EQUAL(_s<signed char>(),"signed char");
-  BOOST_CHECK_EQUAL(_s<short int>(),"short int");
-  BOOST_CHECK_EQUAL(_s<int>(),"int");
-  BOOST_CHECK_EQUAL(_s<long int>(),"long int");
-  BOOST_CHECK_EQUAL(_s<long long int>(),"long long int");
-  BOOST_CHECK_EQUAL(_s<unsigned char>(),"unsigned char");
-  BOOST_CHECK_EQUAL(_s<unsigned short int>(),"unsigned short int");
-  BOOST_CHECK_EQUAL(_s<unsigned int>(),"unsigned int");
-  BOOST_CHECK_EQUAL(_s<unsigned long int>(),"unsigned long int");
-  BOOST_CHECK_EQUAL(_s<unsigned long long int>(),"unsigned long long int");
+  BOOST_CHECK_EQUAL(_<wchar_t>(),"wchar_t");
+  BOOST_CHECK_EQUAL(_<signed char>(),"signed char");
+  BOOST_CHECK_EQUAL(_<short int>(),"short int");
+  BOOST_CHECK_EQUAL(_<int>(),"int");
+  BOOST_CHECK_EQUAL(_<long int>(),"long int");
+  BOOST_CHECK_EQUAL(_<long long int>(),"long long int");
+  BOOST_CHECK_EQUAL(_<unsigned char>(),"unsigned char");
+  BOOST_CHECK_EQUAL(_<unsigned short int>(),"unsigned short int");
+  BOOST_CHECK_EQUAL(_<unsigned int>(),"unsigned int");
+  BOOST_CHECK_EQUAL(_<unsigned long int>(),"unsigned long int");
+  BOOST_CHECK_EQUAL(_<unsigned long long int>(),"unsigned long long int");
 
   /* floating point types */
-  BOOST_CHECK_EQUAL(_s<float>(),"float");
-  BOOST_CHECK_EQUAL(_s<double>(),"double");
+  BOOST_CHECK_EQUAL(_<float>(),"float");
+  BOOST_CHECK_EQUAL(_<double>(),"double");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_FUNDAMENTAL_ENABLED */

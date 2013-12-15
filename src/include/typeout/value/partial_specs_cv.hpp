@@ -20,46 +20,45 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/tvalue/partial_specs_cv.hpp
+// typeout/value/partial_specs_cv.hpp
 
-/** // doc: typeout/tvalue/partial_specs_cv.hpp {{{ 
- * \file typeout/tvalue/partial_specs_cv.hpp
+/** // doc: typeout/value/partial_specs_cv.hpp {{{ 
+ * \file typeout/value/partial_specs_cv.hpp
  * \todo Write documentation
  */ // }}}
 #ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_CV_HPP_INCLUDED
 #define TYPEOUT_TVALUE_PARTIAL_SPECS_CV_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/tvalue/class.hpp>
+#include <typeout/value/info.hpp>
 
 namespace typeout {
-namespace _tvalue {
+namespace _value {
 /*
 template <typename T, T const t>
-struct _<T const, t>
+struct info<T const, t>
 {
   template <class Ostream>
   static void write(Ostream& os)
-  { _<T,t>::write(os); }
+  { info<T,t>::write(os); }
 };
 
 template <typename T, T volatile t>
-struct _<T volatile, t>
+struct info<T volatile, t>
 {
   template <class Ostream>
   static void write(Ostream& os)
-  { _<T,t>::write(os); }
+  { info<T,t>::write(os); }
 };
 
 template <typename T, T const volatile t>
-struct _<T const volatile, t>
+struct info<T const volatile, t>
 {
   template <class Ostream>
   static void write(Ostream& os)
-  { _<T,t>::write(os); }
+  { info<T,t>::write(os); }
 };
 */
-} /*namespace _tvalue */
+} /*namespace _value */
 } /* namespace typeout */
 
 #endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_CV_HPP_INCLUDED */

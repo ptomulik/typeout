@@ -30,29 +30,44 @@
 #define TYPEOUT_STREAM_OSTREAM_HPP_INCLUDED
 
 #include <typeout/config.hpp>
-#include <typeout/type/class.hpp>
-#include <typeout/tvalue/class.hpp>
+#include <typeout/type/pack.hpp>
+#include <typeout/value/info.hpp>
 #include <ostream>
 
 namespace typeout {
 namespace _ostream {
-template <typename T, class CharT, class Traits>
-std::basic_ostream<CharT, Traits>& 
-_ (std::basic_ostream<CharT, Traits>& os)
-{
-  ::typeout::_type::_<T>::write(os);
-  return os;
-}
 
-template <typename T, T t, class CharT, class Traits>
-std::basic_ostream<CharT, Traits>& 
-_ (std::basic_ostream<CharT, Traits>& os)
-{
-  ::typeout::_tvalue::_<T>::write(os,t);
-  return os;
-}
+/** // doc: std::ostream& _<Types...> (std::ostream&) {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename...Types>
+std::ostream& _ (std::ostream& os)
+{ return _type::pack<Types...>::write(os); }
+#if 0
+/** // doc: std::ostream& _<T> (std::ostream&) {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename T>
+std::ostream& _ (std::ostream& os)
+{ return _type::_<std::ostream,T>::write(os); }
+#endif
+/** // doc: std::ostream& _<T,t> (std::ostream&) {{{
+ * \todo Write documentation
+ */ // }}}
+template <typename T, T t>
+std::ostream& _ (std::ostream& os)
+{ return _value::info<T>::write(os,t); }
+
 } /* namespace _ostream */
 } /* namespace typeout */
+
+#if 0
+namespace std {
+template <typename T>
+ostream& operator << (ostream& os, typeout::_type::base<T> x)
+{ return x.dump(os); }
+} /* namespace std */
+#endif
 
 #endif /* TYPEOUT_STREAM_OSTREAM_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:

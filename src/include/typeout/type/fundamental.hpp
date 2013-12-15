@@ -30,7 +30,7 @@
 #define TYPEOUT_TYPE_FUNDAMENTAL_HPP_INCLUDED
 
 #include <typeout/config.hpp>
-#include <typeout/type/class.hpp>
+#include <typeout/type/info.hpp>
 #include <typeout/reg_type.hpp>
 
 

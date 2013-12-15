@@ -133,14 +133,13 @@
 #define TYPEOUT_REG_TCLASS_AS(tpl,as,tparams) \
 namespace typeout { namespace _type { \
   template< TYPEOUT_SEQ_ENUM_TPARAMS(A, tparams)> \
-  struct _<tpl < TYPEOUT_SEQ_ENUM_TARGS(A, tparams) > > \
+  struct info <tpl < TYPEOUT_SEQ_ENUM_TARGS(A, tparams) > > \
   { \
     template <class Ostream> \
-    static void write(Ostream& os) \
+    static Ostream& write(Ostream& os) \
     { \
-      os << as << " < " \
-      TYPEOUT_SEQ_STREAMOUT_TPARAMS(A,tparams) \
-      << " >"; \
+      os << as << " < " TYPEOUT_SEQ_STREAMOUT_TPARAMS(A,tparams) << " >"; \
+      return os; \
     } \
   }; \
 } }

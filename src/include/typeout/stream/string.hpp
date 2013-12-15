@@ -29,28 +29,28 @@
 #ifndef TYPEOUT_STREAM_STRING_HPP_INCLUDED
 #define TYPEOUT_STREAM_STRING_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/stream/ostream.hpp>
+#include <typeout/type/pack.hpp>
+#include <typeout/value/info.hpp>
 #include <string>
 #include <sstream>
 
 namespace typeout {
 namespace _string {
-template <typename T>
+
+template <typename... Types>
 std::string _ ()
 {
   std::ostringstream ss;
-  ss << typeout::_ostream::_<T>;
-  return ss.str();
+  return _type::pack<Types...>::write(ss).str();
 }
 
-template <typename T, T t>
-std::string _ ()
+template <typename T>
+std::string _ (T t)
 {
   std::ostringstream ss;
-  ss << typeout::_ostream::_<T,t>;
-  return ss.str();
+  return _value::info<T>::write(ss,t).str();
 }
+
 } /* namespace _string */
 } /* namespace typeout */
 

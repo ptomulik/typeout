@@ -29,50 +29,44 @@
 
 #include <typeout/type/std/atomic.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_atomic_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_atomic)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::atomic<char> >()),"std::atomic < char >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<bool> >()),"std::atomic < bool >");
+  BOOST_CHECK_EQUAL((_<std::atomic<char> >()),"std::atomic < char >");
+  BOOST_CHECK_EQUAL((_<std::atomic<bool> >()),"std::atomic < bool >");
 
 #if TYPEOUT_SUPPORT_CHAR16_T
-  BOOST_CHECK_EQUAL((_s<std::atomic<char16_t> >()),"std::atomic < char16_t >");
+  BOOST_CHECK_EQUAL((_<std::atomic<char16_t> >()),"std::atomic < char16_t >");
 #endif
 #if TYPEOUT_SUPPORT_CHAR32_T
-  BOOST_CHECK_EQUAL((_s<std::atomic<char32_t> >()),"std::atomic < char32_t >");
+  BOOST_CHECK_EQUAL((_<std::atomic<char32_t> >()),"std::atomic < char32_t >");
 #endif
 
-  BOOST_CHECK_EQUAL((_s<std::atomic<wchar_t> >()),"std::atomic < wchar_t >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<signed char> >()),"std::atomic < signed char >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<short int> >()),"std::atomic < short int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<int> >()),"std::atomic < int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<long int> >()),"std::atomic < long int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<long long int> >()),"std::atomic < long long int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<unsigned char> >()),"std::atomic < unsigned char >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<unsigned short int> >()),"std::atomic < unsigned short int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<unsigned int> >()),"std::atomic < unsigned int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<unsigned long int> >()),"std::atomic < unsigned long int >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<unsigned long long int> >()),"std::atomic < unsigned long long int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<wchar_t> >()),"std::atomic < wchar_t >");
+  BOOST_CHECK_EQUAL((_<std::atomic<signed char> >()),"std::atomic < signed char >");
+  BOOST_CHECK_EQUAL((_<std::atomic<short int> >()),"std::atomic < short int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<int> >()),"std::atomic < int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<long int> >()),"std::atomic < long int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<long long int> >()),"std::atomic < long long int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<unsigned char> >()),"std::atomic < unsigned char >");
+  BOOST_CHECK_EQUAL((_<std::atomic<unsigned short int> >()),"std::atomic < unsigned short int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<unsigned int> >()),"std::atomic < unsigned int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<unsigned long int> >()),"std::atomic < unsigned long int >");
+  BOOST_CHECK_EQUAL((_<std::atomic<unsigned long long int> >()),"std::atomic < unsigned long long int >");
 
   /* floating point types */
-  BOOST_CHECK_EQUAL((_s<std::atomic<float> >()),"std::atomic < float >");
-  BOOST_CHECK_EQUAL((_s<std::atomic<double> >()),"std::atomic < double >");
+  BOOST_CHECK_EQUAL((_<std::atomic<float> >()),"std::atomic < float >");
+  BOOST_CHECK_EQUAL((_<std::atomic<double> >()),"std::atomic < double >");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_ATOMIC_ENABLED */

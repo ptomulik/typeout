@@ -28,26 +28,20 @@
 #if TYPEOUT_TEST_TYPE_STD_CTIME_ENABLED
 
 #include <typeout/type/std/ctime.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_ctime_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_ctime)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::tm>()),"std::tm");
+  BOOST_CHECK_EQUAL((_<std::tm>()),"std::tm");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_CTIME_ENABLED */

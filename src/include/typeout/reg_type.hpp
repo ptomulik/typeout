@@ -30,7 +30,7 @@
 #define TYPEOUT_REG_TYPE_HPP_INCLUDED
 
 #include <typeout/config.hpp>
-#include <typeout/type/class.hpp>
+#include <typeout/type/info.hpp>
 #include <boost/preprocessor/stringize.hpp>
 
 /** \ingroup typeout_reg_type
@@ -62,11 +62,11 @@
 #define TYPEOUT_REG_TYPE_AS(type,as) \
 namespace typeout {  \
 namespace _type { \
-template <> struct _ <type> \
+template <> struct info <type> \
 { \
-  template <typename Ostream> \
-  static void write(Ostream& os) \
-  { os << (as); } \
+  template <class Ostream> \
+  static Ostream& write(Ostream& os) \
+  { os << (as); return os; } \
 }; \
 } \
 } /* namespace typeout */

@@ -20,33 +20,31 @@
  * DEALINGS IN THE SOFTWARE
  */
 
-// typeout/type/class.hpp
+// typeout/value/partial_specs_ptr.hpp
 
-/** // doc: typeout/type/class.hpp {{{ 
- * \file typeout/type/class.hpp
+/** // doc: typeout/value/partial_specs_ptr.hpp {{{ 
+ * \file typeout/value/partial_specs_ptr.hpp
  * \todo Write documentation
  */ // }}}
-#ifndef TYPEOUT_TYPE_CLASS_HPP_INCLUDED
-#define TYPEOUT_TYPE_CLASS_HPP_INCLUDED
+#ifndef TYPEOUT_TVALUE_PARTIAL_SPECS_PTR_HPP_INCLUDED
+#define TYPEOUT_TVALUE_PARTIAL_SPECS_PTR_HPP_INCLUDED
 
-#include <typeout/config.hpp>
-#include <typeout/errors.hpp>
+#include <typeout/value/info.hpp>
 
 namespace typeout {
-
-namespace _type {
-
-template <typename Type>
-struct _ : public error_type_not_registered<Type> 
-{ 
+namespace _value {
+/*
+template <typename T, T* t>
+struct info<T*,t>
+{
   template <class Ostream>
-  static void write(Ostream& os);
+  static void write(Ostream& os)
+  { os << "(" << typeout::info<T*> << ")" << (void*)t; }
 };
-
-} /* namespace _type */
-
+*/
+} /* namesapce _value */
 } /* namespace typeout */
 
-#endif /* TYPEOUT_TYPE_CLASS_HPP_INCLUDED */
+#endif /* TYPEOUT_TVALUE_PARTIAL_SPECS_PTR_HPP_INCLUDED */
 // vim: set expandtab tabstop=2 shiftwidth=2:
 // vim: set foldmethod=marker foldcolumn=4:

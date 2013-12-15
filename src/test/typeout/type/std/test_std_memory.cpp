@@ -29,52 +29,46 @@
 
 #include <typeout/type/std/memory.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_memory_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_memory)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::allocator < int > >()),"std::allocator < int >");
-  BOOST_CHECK_EQUAL((_s<std::allocator < double > >()),"std::allocator < double >");
+  BOOST_CHECK_EQUAL((_<std::allocator < int > >()),"std::allocator < int >");
+  BOOST_CHECK_EQUAL((_<std::allocator < double > >()),"std::allocator < double >");
 # if TYPEOUT_SUPPORT_CXX11_ALLOCATOR
-  BOOST_CHECK_EQUAL((_s<std::allocator_traits < std::allocator < int > > >()), 
+  BOOST_CHECK_EQUAL((_<std::allocator_traits < std::allocator < int > > >()), 
                        "std::allocator_traits < std::allocator < int > >");
-  BOOST_CHECK_EQUAL((_s<std::allocator_arg_t>()), "std::allocator_arg_t");
-  BOOST_CHECK_EQUAL((_s<std::uses_allocator < int*, std::allocator < int > > >()), 
+  BOOST_CHECK_EQUAL((_<std::allocator_arg_t>()), "std::allocator_arg_t");
+  BOOST_CHECK_EQUAL((_<std::uses_allocator < int*, std::allocator < int > > >()), 
                        "std::uses_allocator < int*, std::allocator < int > >");
 # endif
-  BOOST_CHECK_EQUAL((_s<std::auto_ptr < int > >()),"std::auto_ptr < int >");
+  BOOST_CHECK_EQUAL((_<std::auto_ptr < int > >()),"std::auto_ptr < int >");
 #  if TYPEOUT_SUPPORT_STD_SMART_PTR
-  BOOST_CHECK_EQUAL((_s<std::shared_ptr < int > >()),"std::shared_ptr < int >");
-  BOOST_CHECK_EQUAL((_s<std::unique_ptr < int, std::default_delete < int > > >()),
+  BOOST_CHECK_EQUAL((_<std::shared_ptr < int > >()),"std::shared_ptr < int >");
+  BOOST_CHECK_EQUAL((_<std::unique_ptr < int, std::default_delete < int > > >()),
                        "std::unique_ptr < int, std::default_delete < int > >");
-  BOOST_CHECK_EQUAL((_s<std::weak_ptr < int > >()), "std::weak_ptr < int >");
-  BOOST_CHECK_EQUAL((_s<std::owner_less < std::shared_ptr < int > > >()),
+  BOOST_CHECK_EQUAL((_<std::weak_ptr < int > >()), "std::weak_ptr < int >");
+  BOOST_CHECK_EQUAL((_<std::owner_less < std::shared_ptr < int > > >()),
                        "std::owner_less < std::shared_ptr < int > >");
-  BOOST_CHECK_EQUAL((_s<std::enable_shared_from_this < int > >()),
+  BOOST_CHECK_EQUAL((_<std::enable_shared_from_this < int > >()),
                        "std::enable_shared_from_this < int >");
-  BOOST_CHECK_EQUAL((_s<std::default_delete < int > >()),
+  BOOST_CHECK_EQUAL((_<std::default_delete < int > >()),
                        "std::default_delete < int >");
-  BOOST_CHECK_EQUAL((_s<std::bad_weak_ptr>()), "std::bad_weak_ptr");
+  BOOST_CHECK_EQUAL((_<std::bad_weak_ptr>()), "std::bad_weak_ptr");
   // FIXME: This is perhaps not the best place for pointer_traits (it's not
   // tightly related to SMART_PTR)
-  BOOST_CHECK_EQUAL((_s<std::pointer_traits < int* > >()),
+  BOOST_CHECK_EQUAL((_<std::pointer_traits < int* > >()),
                        "std::pointer_traits < int* >");
 # endif
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_MEMORY_ENABLED */

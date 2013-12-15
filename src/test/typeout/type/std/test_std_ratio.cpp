@@ -23,52 +23,49 @@
 /** // doc: typeout/type/test_fundamental.cpp {{{
  * \file typeout/type/test_fundamental.cpp
  * \todo Write documentation
+ * \todo Some types are currently commented-out, because they're unavailable on
+ *  my implementation of std::ratio. It needs investigation and some
+ *  preprocessor-based switching of what's going to be tested.
  */ // }}}
 #include <typeout/test_config.hpp>
 #if TYPEOUT_TEST_TYPE_STD_RATIO_ENABLED
 
 #include <typeout/type/std/ratio.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_ratio_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_ratio)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  //BOOST_CHECK_EQUAL((_s<std::ratio<1,2> >()), "std::ratio < 1, 2 >");
-  //BOOST_CHECK_EQUAL((_s<std::yocto>()),  "std::yocto");
-  //BOOST_CHECK_EQUAL((_s<std::zepto>()),  "std::zepto");
-  BOOST_CHECK_EQUAL((_s<std::atto>()),   "std::atto");
-  BOOST_CHECK_EQUAL((_s<std::femto>()),  "std::femto");
-  BOOST_CHECK_EQUAL((_s<std::pico>()),   "std::pico");
-  BOOST_CHECK_EQUAL((_s<std::nano>()),   "std::nano");
-  BOOST_CHECK_EQUAL((_s<std::micro>()),  "std::micro");
-  BOOST_CHECK_EQUAL((_s<std::milli>()),  "std::milli");
-  BOOST_CHECK_EQUAL((_s<std::centi>()),  "std::centi");
-  BOOST_CHECK_EQUAL((_s<std::deci>()),   "std::deci");
-  BOOST_CHECK_EQUAL((_s<std::deca>()),   "std::deca");
-  BOOST_CHECK_EQUAL((_s<std::hecto>()),  "std::hecto");
-  BOOST_CHECK_EQUAL((_s<std::kilo>()),   "std::kilo");
-  BOOST_CHECK_EQUAL((_s<std::mega>()),   "std::mega");
-  BOOST_CHECK_EQUAL((_s<std::giga>()),   "std::giga");
-  BOOST_CHECK_EQUAL((_s<std::tera>()),   "std::tera");
-  BOOST_CHECK_EQUAL((_s<std::peta>()),   "std::peta");
-  BOOST_CHECK_EQUAL((_s<std::exa>()),    "std::exa");
-  //BOOST_CHECK_EQUAL((_s<std::zetta>()),  "std::zetta");
-  //BOOST_CHECK_EQUAL((_s<std::yotta>()),  "std::yotta");
+  //BOOST_CHECK_EQUAL((_<std::ratio<1,2> >()), "std::ratio < 1, 2 >");
+  //BOOST_CHECK_EQUAL((_<std::yocto>()),  "std::yocto");
+  //BOOST_CHECK_EQUAL((_<std::zepto>()),  "std::zepto");
+  BOOST_CHECK_EQUAL((_<std::atto>()),   "std::atto");
+  BOOST_CHECK_EQUAL((_<std::femto>()),  "std::femto");
+  BOOST_CHECK_EQUAL((_<std::pico>()),   "std::pico");
+  BOOST_CHECK_EQUAL((_<std::nano>()),   "std::nano");
+  BOOST_CHECK_EQUAL((_<std::micro>()),  "std::micro");
+  BOOST_CHECK_EQUAL((_<std::milli>()),  "std::milli");
+  BOOST_CHECK_EQUAL((_<std::centi>()),  "std::centi");
+  BOOST_CHECK_EQUAL((_<std::deci>()),   "std::deci");
+  BOOST_CHECK_EQUAL((_<std::deca>()),   "std::deca");
+  BOOST_CHECK_EQUAL((_<std::hecto>()),  "std::hecto");
+  BOOST_CHECK_EQUAL((_<std::kilo>()),   "std::kilo");
+  BOOST_CHECK_EQUAL((_<std::mega>()),   "std::mega");
+  BOOST_CHECK_EQUAL((_<std::giga>()),   "std::giga");
+  BOOST_CHECK_EQUAL((_<std::tera>()),   "std::tera");
+  BOOST_CHECK_EQUAL((_<std::peta>()),   "std::peta");
+  BOOST_CHECK_EQUAL((_<std::exa>()),    "std::exa");
+  //BOOST_CHECK_EQUAL((_<std::zetta>()),  "std::zetta");
+  //BOOST_CHECK_EQUAL((_<std::yotta>()),  "std::yotta");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_RATIO_ENABLED */

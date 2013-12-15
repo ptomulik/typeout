@@ -28,28 +28,22 @@
 #if TYPEOUT_TEST_TYPE_STD_CMATH_ENABLED
 
 #include <typeout/type/std/cmath.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_cmath_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_cmath)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::div_t>()),"std::div_t");
-  BOOST_CHECK_EQUAL((_s<std::ldiv_t>()),"std::ldiv_t");
-  BOOST_CHECK_EQUAL((_s<std::lldiv_t>()),"std::lldiv_t");
+  BOOST_CHECK_EQUAL((_<std::div_t>()),"std::div_t");
+  BOOST_CHECK_EQUAL((_<std::ldiv_t>()),"std::ldiv_t");
+  BOOST_CHECK_EQUAL((_<std::lldiv_t>()),"std::lldiv_t");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_CMATH_ENABLED */

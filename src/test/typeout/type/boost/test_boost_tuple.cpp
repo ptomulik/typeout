@@ -29,28 +29,22 @@
 
 #include <typeout/type/boost/tuple.hpp>
 #include <typeout/type/fundamental.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_boost_tuple_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(boost_tuple)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s< boost::tuple<> >()),   "boost::tuple < >");
-  BOOST_CHECK_EQUAL((_s< boost::tuple<char> >()),   "boost::tuple < char >");
-  BOOST_CHECK_EQUAL((_s< boost::tuple<char,int> >()),   "boost::tuple < char, int >");
+  BOOST_CHECK_EQUAL((_< boost::tuple<> >()),   "boost::tuple < >");
+  BOOST_CHECK_EQUAL((_< boost::tuple<char> >()),   "boost::tuple < char >");
+  BOOST_CHECK_EQUAL((_< boost::tuple<char,int> >()),   "boost::tuple < char, int >");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_BOOST_TUPLE_ENABLED */

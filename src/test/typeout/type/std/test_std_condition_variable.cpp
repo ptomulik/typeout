@@ -28,27 +28,21 @@
 #if TYPEOUT_TEST_TYPE_STD_CONDITION_VARIABLE_ENABLED
 
 #include <typeout/type/std/condition_variable.hpp>
+#include <typeout/stream/string.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_std_condition_variable_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(std_condition_variable)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
-}
-
-BOOST_AUTO_TEST_CASE(type_names)
-{
+  using _string::_;
   /* Integral types */
-  BOOST_CHECK_EQUAL((_s<std::condition_variable>()),"std::condition_variable");
-  BOOST_CHECK_EQUAL((_s<std::condition_variable_any>()),"std::condition_variable_any");
+  BOOST_CHECK_EQUAL((_<std::condition_variable>()),"std::condition_variable");
+  BOOST_CHECK_EQUAL((_<std::condition_variable_any>()),"std::condition_variable_any");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_STD_CONDITION_VARIABLE_ENABLED */

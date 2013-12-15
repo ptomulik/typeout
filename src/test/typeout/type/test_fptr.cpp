@@ -30,32 +30,26 @@
 #include <typeout/type/fptr.hpp>
 #include <typeout/type/fundamental.hpp>
 #include <typeout/type/partial_specs.hpp>
+#include <typeout/stream/string.hpp>
 
 #include <boost/test/unit_test.hpp>
 
-#include <sstream>
+BOOST_AUTO_TEST_SUITE(typeout)
+BOOST_AUTO_TEST_SUITE(_type)
 
-BOOST_AUTO_TEST_SUITE(test_type_fptr_unit)
-
-template <typename T>
-std::string _s()
+BOOST_AUTO_TEST_CASE(fptr)
 {
-  std::stringstream ss;
-  typeout::_type::_<T>::write(ss);
-  return ss.str();
+  using _string::_;
+  BOOST_CHECK_EQUAL(_<void(*)()>(),"void(*)()");
+  BOOST_CHECK_EQUAL(_<void(*)(void)>(),"void(*)()");
+  BOOST_CHECK_EQUAL(_<void(*)(int)>(),"void(*)(int)");
+  BOOST_CHECK_EQUAL(_<void(*)(int,char)>(),"void(*)(int, char)");
+  BOOST_CHECK_EQUAL(_<void(*)(int&,char*)>(),"void(*)(int&, char*)");
+  BOOST_CHECK_EQUAL(_<int(*)()>(), "int(*)()");
+  BOOST_CHECK_EQUAL(_<char&(*)(int const&)>(), "char&(*)(int const&)");
 }
 
-BOOST_AUTO_TEST_CASE(type_names)
-{
-  BOOST_CHECK_EQUAL(_s<void(*)()>(),"void(*)()");
-  BOOST_CHECK_EQUAL(_s<void(*)(void)>(),"void(*)()");
-  BOOST_CHECK_EQUAL(_s<void(*)(int)>(),"void(*)(int)");
-  BOOST_CHECK_EQUAL(_s<void(*)(int,char)>(),"void(*)(int, char)");
-  BOOST_CHECK_EQUAL(_s<void(*)(int&,char*)>(),"void(*)(int&, char*)");
-  BOOST_CHECK_EQUAL(_s<int(*)()>(), "int(*)()");
-  BOOST_CHECK_EQUAL(_s<char&(*)(int const&)>(), "char&(*)(int const&)");
-}
-
+BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()
 
 #endif /* TYPEOUT_TEST_TYPE_FPTR_ENABLED */

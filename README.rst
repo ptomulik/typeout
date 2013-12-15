@@ -176,7 +176,7 @@ TESTS
 
 Tests may be compiled with::
 
-    scons check
+    scons unit-test
 
 This creates single program which runs all defined unit tests. The program is
 ``build/test/runtest`` or ``build/test/runtest.exe``. On Linux platforms the

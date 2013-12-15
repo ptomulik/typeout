@@ -41,27 +41,27 @@ namespace _type {
 // cv-qualifiers
 //
 template <typename T>
-struct _ <T const> 
+struct info <T const> 
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<T>::write(os); os << " const"; }
+  static Ostream& write(Ostream& os) 
+  { info<T>::write(os) << " const"; return os; }
 };
 
 template <typename T>
-struct _ <T volatile> 
+struct info <T volatile> 
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<T>::write(os); os << " volatile"; }
+  static Ostream& write(Ostream& os) 
+  { info<T>::write(os) << " volatile"; return os; }
 };
 
 template <typename T>
-struct _ <T const volatile> 
+struct info <T const volatile> 
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<T>::write(os); os << " const volatile"; }
+  static Ostream& write(Ostream& os)
+  { info<T>::write(os) << " const volatile"; return os; }
 };
 
 } /* namespace _type */

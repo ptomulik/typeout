@@ -38,11 +38,11 @@ namespace typeout {
 namespace _type {
 
 template <typename T>
-struct _ <T*>
+struct info <T*>
 {
   template <typename Ostream>
-  static void write(Ostream& os)
-  { _<T>::write(os); os << "*"; }
+  static Ostream& write(Ostream& os)
+  { info<T>::write(os) << "*"; return os; }
 };
 
 } /* namespace _type */
