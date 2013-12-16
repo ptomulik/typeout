@@ -1,6 +1,9 @@
 typeout - c++ library to retrieve type names at runtime
 =======================================================
 
+.. image:: https://travis-ci.org/ptomulik/typeout.png?branch=master
+   :target: https://travis-ci.org/ptomulik/typeout
+
 INTRODUCTION
 ------------
 
@@ -8,7 +11,7 @@ This small utility library allows you to register types at one place of your
 program and retrieve their names at runtime at other places. The library is
 thought to be used for simple debugging and writing test-suites based on c++
 templates. Currently it supports standard output streams
-(``std::basic_ostream``) and standard strings (``std::string``) as outputs.
+(``std::ostream``) and standard strings (``std::string``) as outputs.
 
 STATUS
 ------
@@ -20,22 +23,20 @@ subject to changes. The current status is thus *experimental*.
 Things that work:
 
   - fundamental c++ types (fundamental c++ types are pre-registered),
-  - function pointers (work out of box) and registered function pointers,
+  - function pointers (displayed as hex address) and registered function
+    pointers (displayed as function name),
   - registering custom classes and structures,
   - registering template classes (with type and non-type parameters),
   - handling cv-qualified types, references, pointers and array extents for each
     registered type without additional user's effort,
-  - direct output to standard streams and standard strings,
+  - direct output to standard streams and standard strings, this also works
+    with ``boost::unit_test::lazy_ostream`` used by ``BOOST_TEST_MESSAGE()``;
 
 Things that are missing:
 
   - preregistered types from most standard library, e.g. std::string, and so on,
-  - good support for integral values, pointers and references as template
-    parameters, and other non-type template parameters,
   - registering function types, function templates, and so on,
   - support for templates as template parameters in macros used to register types,
-  - direct streaming to boost::unit_test::lazy_ostream used by
-    ``BOOST_TEST_MESSAGE()``; currently printing-out type names through this
     stream is possible with functions which return type name written to
     ``std::string``
 
@@ -44,7 +45,9 @@ REQUIREMENTS
 
 The **typeout** library has following dependencies:
 
-  - ``gcc`` (4.8.2 or later) or ``clang`` (3.3 or later)
+  - `Scons`_, if you need to build unit tests, examples or documentation,
+  - ``gcc`` (4.8.2 or later) or ``clang`` (3.3 or later), if you need to build
+    unit tests or examples,
   - `Boost Config`_ is used to configure the internals and features of the library,
     you need it each time you use the **typeout** library,
   - `Boost Preprocessor`_ is used by several preprocessor macros, you need it
@@ -59,7 +62,8 @@ Example installation on debian/ubuntu:
   - ``apt-get install g++-4.8`` for ``gcc``, or
   - ``apt-get install clang libstdc++-4.8-dev`` for ``clang``,
   - ``apt-get install libboost-test-dev libboost-dev`` for any compiler,
-  - ``apt-get install doxygen`` if you need build documenation,
+  - ``apt-get install scons``,
+  - ``apt-get install doxygen``, if you need build documenation,
 
 Note: we don't use ``libc++-dev`` (a library provided by LLVM) because boost
 testing framework is compiled against ``libstdc++`` and we must use the same.
@@ -151,22 +155,20 @@ example::
 
     BOOST_AUTO_TEST_CASE_TEMPLATE(my_test, T, test_types)
     {
-      using typeout::_string::_;
-
-      BOOST_TEST_MESSAGE(__FILE__ "(" __LINE__ "): note: running my_test with T = " << _<T>() << ";");
-      BOOST_CHECK_EQUAL( sizeof(T), (unsigned)4 );
+      using typeout::_ostream::_;
+      BOOST_TEST_MESSAGE(__FILE__ << "(" << __LINE__ << "): note: running my_test<T> with T = " << _<T> << ";");
+      BOOST_CHECK_MESSAGE( (sizeof(T) == (unsigned)4), "check sizeof(" << _<T> << ") == (unsigned)4 failed [" << sizeof(T) << " != 4]" );
     }
 
 Now, the output from test runner with ``--log_level=message`` is like::
 
     Running 3 test cases...
-    a.cpp(13): note: running my_test with T = int;
-    a.cpp(13): note: running my_test with T = long int;
-    a.cpp(14): error in "my_test<l>": check sizeof(T) == (unsigned)4 failed [8 != 4]
-    a.cpp(13): note: running my_test with T = unsigned char;
-    a.cpp(14): error in "my_test<h>": check sizeof(T) == (unsigned)4 failed [1 != 4]
+    /tmp/a.cpp(12): note: running my_test<T> with T = int;
+    /tmp/a.cpp(12): note: running my_test<T> with T = long int;
+    /tmp/a.cpp(13): error in "my_test<l>": check sizeof(long int) == (unsigned)4 failed [8 != 4]
+    /tmp/a.cpp(12): note: running my_test<T> with T = unsigned char;
+    /tmp/a.cpp(13): error in "my_test<h>": check sizeof(unsigned char) == (unsigned)4 failed [1 != 4]
 
-    *** 2 failures detected in test suite "example"
 
 As you see, it's much easier to guess, that the test suite failed for ``long
 int`` and ``unsigned char`` types.
@@ -251,6 +253,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE
 
+.. _Scons: http://scons.org
 .. _Doxygen: http://doxygen.org
 .. _Boost Config: http://boost.org/libs/config
 .. _Boost Preprocessor: http://boost.org/libs/preprocessor
