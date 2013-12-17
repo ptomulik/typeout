@@ -22,7 +22,20 @@ Import('env')
 
 env.Append(CPPPATH = [ '#%s' % env.Dir('.').path ])
 
-# Recursion
-subdirs = [ 'typeout' ]
-scripts = [ '%s/SConscript' % s for s in subdirs ]
-SConscript( scripts, exports = ['env'] )
+# Build api-doc with doxygen
+doxygen_ops = {
+  'SRCDIR'            : env.Dir('..'),
+  'PROJECT_NAME'      : 'typeout',
+  'PROJECT_NUMBER'    : '0.0.1',
+  'PROJECT_BRIEF'     : 'Utilities to retrieve c++ type names at runtime',
+  'EXCLUDE'           : env.Dir('../test'),
+  'OUTPUT_DIRECTORY'  : env.Dir('api'),
+  'EXAMPLE_PATH'      : env.Dir('../examples'),
+  'INCLUDE_PATH'      : env.Dir('../include'),
+  'CPP_FILTER'        : env.File('#bin/doxycppfilter'),
+  'RECURSIVE'         : 'YES'
+}
+
+SConscript('api/SConscript', exports = { 'env' : env, 'options' : doxygen_ops })
+env.Ignore(env.Dir('.'), env.Dir('api'))
+env.Alias('api-doc', env.Dir('api'))
