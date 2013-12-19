@@ -1,6 +1,3 @@
 [submodule "site_scons/site_tools/doxygen"]
 	path = site_scons/site_tools/doxygen
 	url = git://github.com/ptomulik/scons_doxygen.git
-[submodule "src/doc/api"]
-	path = src/doc/api
-	url = git://github.com/ptomulik/scons-doxygen-template.git
