@@ -1,15 +1,16 @@
-# @COPYRIGHT@
 #
+# Copyright (c) 2013 by Pawel Tomulik <ptomulik@meil.pw.edu.pl>
+# 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-#
+# 
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-#
+# 
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,10 +19,35 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE
 
-Import('env')
+Import(['env'])
 
-env.Append(CPPPATH = [ '#%s' % env.Dir('.').path ])
+# Build api-doc with doxygen
+cpp_filter  = env.File('#bin/doxycppfilter')
+cpp_suffixes = ['.c','.cpp','.cxx','.h','.hpp']
+options = {
+  'INPUT'               : '../..',
+  'RECURSIVE'           : 'YES',
+  'PROJECT_NAME'        : 'typeout',
+  'PROJECT_NUMBER'      : '0.0.1',
+  'PROJECT_BRIEF'       : 'Utilities to retrieve c++ type names at runtime',
+  'EXCLUDE'             : '../../test',
+  'OUTPUT_DIRECTORY'    : '.',
+  'EXAMPLE_PATH'        : ['../../examples'],
+  'INCLUDE_PATH'        : ['../../include'],
+  'FILTE_PATTERNS'      : dict([("*%s" % s,cpp_filter) for s in cpp_suffixes]),
+  'STRIP_FROM_PATH'     : '../..',
+  'STRIP_FROM_INC_PATH' : '../..',
+}
+doxyfile = env.Doxyfile(**options)
+doc      = env.Doxygen(doxyfile)
+env.Depends(doc, doxyfile)
 
-SConscript('api/SConscript', exports = ['env'])
-env.Ignore(env.Dir('.'), env.Dir('api'))
-env.Alias('api-doc', env.Dir('api'))
+targets  = doc + doxyfile
+
+Return('targets')
+
+# Local Variables:
+# # tab-width:4
+# # indent-tabs-mode:nil
+# # End:
+# vim: set syntax=scons expandtab tabstop=4 shiftwidth=4:

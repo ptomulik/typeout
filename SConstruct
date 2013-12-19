@@ -23,7 +23,7 @@ import os
 def BuildVariant(env, variant_dir, src_dir, duplicate = 0, **kw):
     SConscript( '%s/SConscript' % variant_dir, exports = ['env'] )
 
-env = Environment( ENV = os.environ, tools =  [ 'default' , 'textfile' , 'doxygen' ] )
+env = Environment( ENV = os.environ, tools =  [ 'default' , 'doxyfile' , 'doxygen' ] )
 
 # import some environment variables
 for key in ['CC', 'CXX']:
