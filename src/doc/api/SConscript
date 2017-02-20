@@ -34,7 +34,7 @@ options = {
   'OUTPUT_DIRECTORY'    : '.',
   'EXAMPLE_PATH'        : ['../../examples'],
   'INCLUDE_PATH'        : ['../../include'],
-  'FILTE_PATTERNS'      : dict([("*%s" % s,cpp_filter) for s in cpp_suffixes]),
+  'FILTER_PATTERNS'     : { "*%s" % s : cpp_filter for s in cpp_suffixes },
   'STRIP_FROM_PATH'     : '../..',
   'STRIP_FROM_INC_PATH' : '../..',
 }
